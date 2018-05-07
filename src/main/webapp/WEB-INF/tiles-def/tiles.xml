@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="base" template="/WEB-INF/templates/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/templates/header.jsp" />
+		<put-attribute name="title" value="STLC 관리자 페이지" />
+		<put-attribute name="footer" value="/WEB-INF/templates/footer.jsp" />
+	</definition>
+
+	<definition name="login" extends="base">
+		<put-attribute name="title" value="STLC 관리자 로그인" />
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+	<definition name="home" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+
+	<definition name="messageSetting" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/messageSetting.jsp" />
+	</definition>
+	
+	<definition name="searchdata" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/searchdata.jsp" />
+	</definition>
+	
+	<definition name="uploadcomplete" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/uploadcomplete.jsp" />
+	</definition>
+
+	<definition name="traffic1" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/traffic1.jsp" />
+	</definition>
+	
+	<definition name="traffic2" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/traffic2.jsp" />
+	</definition>
+	
+	<definition name="traffic3" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/traffic3.jsp" />
+	</definition>
+	
+	<definition name="traffic4" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/traffic4.jsp" />
+	</definition>
+	
+</tiles-definitions>
