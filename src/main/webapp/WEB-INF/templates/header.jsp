@@ -4,7 +4,8 @@
 
 <h2 style="text-align: center; margin: 20px;">
 	<a href="<c:url value="/" />" style="text-decoration: none; color: black;">
-		Situation-cognitive Traffic Light Controller
+		<img id="logo" src="/STLC/resources/files/logo.jpg" style="float:right;width:100px;height:100px">
+		<br>Situation-cognitive Traffic Light Controller<!-- 이미지 로고 -->
 	</a>
 </h2>
 
@@ -23,10 +24,7 @@
 		data-toggle="dropdown" style="display: block; width: 100%; padding: 20px;">메뉴
 	</button>
 	<div class="dropdown-menu">
-		<a class="dropdown-item" href="<c:url value="/traffic1" />">신호등1</a>
-		<a class="dropdown-item" href="<c:url value="/traffic2" />">신호등2</a>
-		<a class="dropdown-item" href="<c:url value="/traffic3" />">신호등3</a>
-		<a class="dropdown-item" href="<c:url value="/traffic4" />">신호등4</a>
+		<a class="dropdown-item" href="<c:url value="/trafficstatus" />">교차로 신호등</a>
 		<a class="dropdown-item" href="<c:url value="/messageSetting" />">메세지 설정</a>
 		<a class="dropdown-item" href="<c:url value="/searchdata" />">분석결과 업로드</a>	
 	</div>

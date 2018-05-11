@@ -25,4 +25,8 @@ public class FileService {
 		}
 		return baRequesterCert;
 	}
+	
+	public void CheckCompleteImgFile() {
+		
+	}
 }

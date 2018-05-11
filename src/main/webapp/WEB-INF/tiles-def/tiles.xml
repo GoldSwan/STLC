@@ -31,20 +31,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/uploadcomplete.jsp" />
 	</definition>
 
-	<definition name="traffic1" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/traffic1.jsp" />
-	</definition>
-	
-	<definition name="traffic2" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/traffic2.jsp" />
-	</definition>
-	
-	<definition name="traffic3" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/traffic3.jsp" />
-	</definition>
-	
-	<definition name="traffic4" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/traffic4.jsp" />
+	<definition name="trafficstatus" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/trafficstatus.jsp" />
 	</definition>
 	
 </tiles-definitions>

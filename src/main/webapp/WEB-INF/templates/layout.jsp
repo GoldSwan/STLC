@@ -30,7 +30,7 @@
 <!-- Custom styles for this template -->
 <link rel="stylesheet" href="<c:url value="/resources/css/login.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
-
+<link rel="shortcut icon" href="/STLC/resources/files/favicon.ico"/>
 </head>
 <body>
 

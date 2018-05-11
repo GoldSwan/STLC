@@ -29,5 +29,4 @@ public class RegisterController {
 		
 		return "home";
 	}
-
 }
