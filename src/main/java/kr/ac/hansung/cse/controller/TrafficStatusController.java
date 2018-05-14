@@ -27,7 +27,7 @@ public class TrafficStatusController {
 	private Map map2 = new HashMap();// traffic2
 	private Map map3 = new HashMap();// traffic3
 	private Map map4 = new HashMap();// traffic4
-	
+
 	@RequestMapping(value = "/trafficstatus")
 	public String traffic1() {
 		return "trafficstatus";
@@ -46,61 +46,81 @@ public class TrafficStatusController {
 		String text_url2 = new String(baRequesterCert2);/* byte->string 변환 */
 		String text_url3 = new String(baRequesterCert3);/* byte->string 변환 */
 		String text_url4 = new String(baRequesterCert4);/* byte->string 변환 */
-		
-		//신호등1
+		ArrayList<String> list1 = fileService.getTextInfoList(text_url1);
+		ArrayList<String> list2 = fileService.getTextInfoList(text_url2);
+		ArrayList<String> list3 = fileService.getTextInfoList(text_url3);
+		ArrayList<String> list4 = fileService.getTextInfoList(text_url4);
+		String textTime1 = new String(list1.get(1));// text에서 읽어들인 textTime 정보
+		String textTime2 = new String(list2.get(1));
+		String textTime3 = new String(list3.get(1));
+		String textTime4 = new String(list4.get(1));
+
+		// 신호등1
 		if (map1.containsKey("url")) {
-			if (map1.get("url").equals("/STLC/resources/files/traffic1_1.jpg")) {
-				map1.put("url", "/STLC/resources/files/traffic1_2.jpg");
+			if (map1.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG1_1)&&!checkSameTime(map1, textTime1)) {
+				map1.put("url", ConstantTrafficInfoText.TRAFFIC_IMG1_2);
 				map1.put("trafficInfo", text_url1);
-			} else {
-				map1.put("url", "/STLC/resources/files/traffic1_1.jpg");
+				map1.put("textime", textTime1);
+			} else if(map1.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG1_2) &&!checkSameTime(map1, textTime1)) {
+				map1.put("url", ConstantTrafficInfoText.TRAFFIC_IMG1_1);
 				map1.put("trafficInfo", text_url1);
+				map1.put("textime", textTime1);
 			}
 		} else {
-			map1.put("url", "/STLC/resources/files/traffic1_1.jpg");
+			map1.put("url", ConstantTrafficInfoText.TRAFFIC_IMG1_1);
 			map1.put("trafficInfo", text_url1);
+			map1.put("textime", textTime1);
 		}
-		
-		//신호등2
+
+		// 신호등2
 		if (map2.containsKey("url")) {
-			if (map2.get("url").equals("/STLC/resources/files/traffic2_1.jpg")) {
-				map2.put("url", "/STLC/resources/files/traffic2_2.jpg");
+			if (map2.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG2_1)&&!checkSameTime(map2, textTime2)) {
+				map2.put("url", ConstantTrafficInfoText.TRAFFIC_IMG2_2);
 				map2.put("trafficInfo", text_url2);
-			} else {
-				map2.put("url", "/STLC/resources/files/traffic2_1.jpg");
+				map2.put("textime", textTime2);
+			} else if(map2.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG2_2) &&!checkSameTime(map2, textTime2)) {
+				map2.put("url", ConstantTrafficInfoText.TRAFFIC_IMG2_1);
 				map2.put("trafficInfo", text_url2);
+				map2.put("textime", textTime2);
 			}
 		} else {
-			map2.put("url", "/STLC/resources/files/traffic2_1.jpg");
+			map2.put("url", ConstantTrafficInfoText.TRAFFIC_IMG2_1);
 			map2.put("trafficInfo", text_url2);
+			map2.put("textime", textTime2);
 		}
-		
-		//신호등3
+
+		// 신호등3
 		if (map3.containsKey("url")) {
-			if (map3.get("url").equals("/STLC/resources/files/traffic3_1.jpg")) {
-				map3.put("url", "/STLC/resources/files/traffic3_2.jpg");
+			if (map3.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG3_1)&&!checkSameTime(map3, textTime3)) {
+				map3.put("url", ConstantTrafficInfoText.TRAFFIC_IMG3_2);
 				map3.put("trafficInfo", text_url3);
-			} else {
-				map3.put("url", "/STLC/resources/files/traffic3_1.jpg");
+				map3.put("textime", textTime3);
+			} else if(map3.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG3_2) &&!checkSameTime(map3, textTime3)) {
+				map3.put("url", ConstantTrafficInfoText.TRAFFIC_IMG3_1);
 				map3.put("trafficInfo", text_url3);
+				map3.put("textime", textTime3);
 			}
 		} else {
-			map3.put("url", "/STLC/resources/files/traffic3_1.jpg");
+			map3.put("url", ConstantTrafficInfoText.TRAFFIC_IMG3_1);
 			map3.put("trafficInfo", text_url3);
+			map3.put("textime", textTime3);
 		}
-		
-		//신호등4
+
+		// 신호등4
 		if (map4.containsKey("url")) {
-			if (map4.get("url").equals("/STLC/resources/files/traffic4_1.jpg")) {
-				map4.put("url", "/STLC/resources/files/traffic4_2.jpg");
+			if (map4.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG4_1)&&!checkSameTime(map4, textTime4)) {
+				map4.put("url", ConstantTrafficInfoText.TRAFFIC_IMG4_2);
 				map4.put("trafficInfo", text_url4);
-			} else {
-				map4.put("url", "/STLC/resources/files/traffic4_1.jpg");
+				map4.put("textime", textTime4);
+			} else if(map4.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG4_2) &&!checkSameTime(map4, textTime4)) {
+				map4.put("url", ConstantTrafficInfoText.TRAFFIC_IMG4_1);
 				map4.put("trafficInfo", text_url4);
+				map4.put("textime", textTime4);
 			}
 		} else {
-			map4.put("url", "/STLC/resources/files/traffic4_1.jpg");
+			map4.put("url", ConstantTrafficInfoText.TRAFFIC_IMG4_1);
 			map4.put("trafficInfo", text_url4);
+			map4.put("textime", textTime4);
 		}
 
 		list.add(0, map1);
@@ -114,4 +134,10 @@ public class TrafficStatusController {
 		return result;
 	}
 
+	public boolean checkSameTime(Map map, String timeValue) {
+		if (map.get("textime").equals(timeValue))
+			return true;
+		else
+			return false;
+	}
 }

@@ -4,8 +4,8 @@
 
 <h2 style="text-align: center; margin: 20px;">
 	<a href="<c:url value="/" />" style="text-decoration: none; color: black;">
-		<img id="logo" src="/STLC/resources/files/logo.jpg" style="float:right;width:100px;height:100px">
-		<br>Situation-cognitive Traffic Light Controller<!-- 이미지 로고 -->
+		<img id="logo" src="/STLC/resources/files/logo.jpg" style="float:left;width:100px;height:100px">
+		<span>Situation-cognitive Traffic Light Controller</span><!-- 이미지 로고 -->
 	</a>
 </h2>
 

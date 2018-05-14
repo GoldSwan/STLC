@@ -2,15 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<c:if test="${pageContext.request.userPrincipal.name != null }">
-	<a href="javascript:document.getElementById('logout').submit()"
-		style="display: block; text-align: right">로그아웃</a>
-</c:if>
-<form id="logout" action="<c:url value="/logout" />" method="post">
-	<input type="hidden" name="${_csrf.parameterName }"
-		value="${_csrf.token }" />
-</form>
-
 <div class="jumbotron">
 	<form action="<c:url value="/login" />" method="post" name="login">
 		<input type="hidden" name="${_csrf.parameterName }"
