@@ -38,10 +38,10 @@ public class TrafficStatusController {
 		/* TEST DATA 생성 */
 		/* byte로 text 읽기 */
 
-		byte[] baRequesterCert1 = fileService.getCertKey(ConstantTrafficInfoText.TRAFFIC_INFO_TEXT1_URL);
-		byte[] baRequesterCert2 = fileService.getCertKey(ConstantTrafficInfoText.TRAFFIC_INFO_TEXT2_URL);
-		byte[] baRequesterCert3 = fileService.getCertKey(ConstantTrafficInfoText.TRAFFIC_INFO_TEXT3_URL);
-		byte[] baRequesterCert4 = fileService.getCertKey(ConstantTrafficInfoText.TRAFFIC_INFO_TEXT4_URL);
+		byte[] baRequesterCert1 = fileService.getCertKey(ConstantTrafficInfoText.EAST_TEXT);
+		byte[] baRequesterCert2 = fileService.getCertKey(ConstantTrafficInfoText.WEST_TEXT);
+		byte[] baRequesterCert3 = fileService.getCertKey(ConstantTrafficInfoText.SOUTH_TEXT);
+		byte[] baRequesterCert4 = fileService.getCertKey(ConstantTrafficInfoText.NORTH_TEXT);
 		String text_url1 = new String(baRequesterCert1);/* byte->string 변환 */
 		String text_url2 = new String(baRequesterCert2);/* byte->string 변환 */
 		String text_url3 = new String(baRequesterCert3);/* byte->string 변환 */
@@ -57,68 +57,68 @@ public class TrafficStatusController {
 
 		// 신호등1
 		if (map1.containsKey("url")) {
-			if (map1.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG1_1)&&!checkSameTime(map1, textTime1)) {
-				map1.put("url", ConstantTrafficInfoText.TRAFFIC_IMG1_2);
+			if (map1.get("url").equals(ConstantTrafficInfoText.EAST_IMG0)&&!checkSameTime(map1, textTime1)) {
+				map1.put("url", ConstantTrafficInfoText.EAST_IMG1);
 				map1.put("trafficInfo", text_url1);
 				map1.put("textime", textTime1);
-			} else if(map1.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG1_2) &&!checkSameTime(map1, textTime1)) {
-				map1.put("url", ConstantTrafficInfoText.TRAFFIC_IMG1_1);
+			} else if(map1.get("url").equals(ConstantTrafficInfoText.EAST_IMG1) &&!checkSameTime(map1, textTime1)) {
+				map1.put("url", ConstantTrafficInfoText.EAST_IMG0);
 				map1.put("trafficInfo", text_url1);
 				map1.put("textime", textTime1);
 			}
 		} else {
-			map1.put("url", ConstantTrafficInfoText.TRAFFIC_IMG1_1);
+			map1.put("url", ConstantTrafficInfoText.EAST_IMG0);
 			map1.put("trafficInfo", text_url1);
 			map1.put("textime", textTime1);
 		}
 
 		// 신호등2
 		if (map2.containsKey("url")) {
-			if (map2.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG2_1)&&!checkSameTime(map2, textTime2)) {
-				map2.put("url", ConstantTrafficInfoText.TRAFFIC_IMG2_2);
+			if (map2.get("url").equals(ConstantTrafficInfoText.WEST_IMG0)&&!checkSameTime(map2, textTime2)) {
+				map2.put("url", ConstantTrafficInfoText.WEST_IMG1);
 				map2.put("trafficInfo", text_url2);
 				map2.put("textime", textTime2);
-			} else if(map2.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG2_2) &&!checkSameTime(map2, textTime2)) {
-				map2.put("url", ConstantTrafficInfoText.TRAFFIC_IMG2_1);
+			} else if(map2.get("url").equals(ConstantTrafficInfoText.WEST_IMG1) &&!checkSameTime(map2, textTime2)) {
+				map2.put("url", ConstantTrafficInfoText.WEST_IMG0);
 				map2.put("trafficInfo", text_url2);
 				map2.put("textime", textTime2);
 			}
 		} else {
-			map2.put("url", ConstantTrafficInfoText.TRAFFIC_IMG2_1);
+			map2.put("url", ConstantTrafficInfoText.WEST_IMG0);
 			map2.put("trafficInfo", text_url2);
 			map2.put("textime", textTime2);
 		}
 
 		// 신호등3
 		if (map3.containsKey("url")) {
-			if (map3.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG3_1)&&!checkSameTime(map3, textTime3)) {
-				map3.put("url", ConstantTrafficInfoText.TRAFFIC_IMG3_2);
+			if (map3.get("url").equals(ConstantTrafficInfoText.SOUTH_IMG0)&&!checkSameTime(map3, textTime3)) {
+				map3.put("url", ConstantTrafficInfoText.SOUTH_IMG1);
 				map3.put("trafficInfo", text_url3);
 				map3.put("textime", textTime3);
-			} else if(map3.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG3_2) &&!checkSameTime(map3, textTime3)) {
-				map3.put("url", ConstantTrafficInfoText.TRAFFIC_IMG3_1);
+			} else if(map3.get("url").equals(ConstantTrafficInfoText.SOUTH_IMG1) &&!checkSameTime(map3, textTime3)) {
+				map3.put("url", ConstantTrafficInfoText.SOUTH_IMG0);
 				map3.put("trafficInfo", text_url3);
 				map3.put("textime", textTime3);
 			}
 		} else {
-			map3.put("url", ConstantTrafficInfoText.TRAFFIC_IMG3_1);
+			map3.put("url", ConstantTrafficInfoText.SOUTH_IMG0);
 			map3.put("trafficInfo", text_url3);
 			map3.put("textime", textTime3);
 		}
 
 		// 신호등4
 		if (map4.containsKey("url")) {
-			if (map4.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG4_1)&&!checkSameTime(map4, textTime4)) {
-				map4.put("url", ConstantTrafficInfoText.TRAFFIC_IMG4_2);
+			if (map4.get("url").equals(ConstantTrafficInfoText.NORTH_IMG0)&&!checkSameTime(map4, textTime4)) {
+				map4.put("url", ConstantTrafficInfoText.NORTH_IMG1);
 				map4.put("trafficInfo", text_url4);
 				map4.put("textime", textTime4);
-			} else if(map4.get("url").equals(ConstantTrafficInfoText.TRAFFIC_IMG4_2) &&!checkSameTime(map4, textTime4)) {
-				map4.put("url", ConstantTrafficInfoText.TRAFFIC_IMG4_1);
+			} else if(map4.get("url").equals(ConstantTrafficInfoText.NORTH_IMG1) &&!checkSameTime(map4, textTime4)) {
+				map4.put("url", ConstantTrafficInfoText.NORTH_IMG0);
 				map4.put("trafficInfo", text_url4);
 				map4.put("textime", textTime4);
 			}
 		} else {
-			map4.put("url", ConstantTrafficInfoText.TRAFFIC_IMG4_1);
+			map4.put("url", ConstantTrafficInfoText.NORTH_IMG0);
 			map4.put("trafficInfo", text_url4);
 			map4.put("textime", textTime4);
 		}
