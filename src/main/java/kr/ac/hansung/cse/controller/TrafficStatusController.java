@@ -28,8 +28,8 @@ public class TrafficStatusController {
 	private static final String TEXT_DIR = "/var/lib/tomcat8/webapps/STLC/resources/files";
 	private static final String FILE_DIR = "/STLC/resources/files";
 	private static final String[] EWSN = { "/east", "/west", "/south", "/north" }; 
-	private static final String IMAGE_DIR = "/STLC/reources/images";
-	private static final String[] LIGHT = { "/light-red", "/light-yellow", "/light-green", "/light-left" };
+	private static final String IMAGE_DIR = "/STLC/resources/images";
+	private static final String[] LIGHT = { "/light-green", "/light-left", "/light-yellow", "/light-red" };
 
 	private final String serverKey = "AAAAc4cstQs:APA91bHmizdDtgS46SfpWAU34kXYHE0DdfzpA33TzgGq162DzTZFPJsAvQvQqncrxHrOCYj89aZbMMls4b-d-mbgjSVZfil28t6UIi6DQwy6eWps7pP03FAHexfJ2vKH7_WigFYlgol7";
 
@@ -61,9 +61,10 @@ public class TrafficStatusController {
 			String imgPath = FILE_DIR + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
 
 			// 분석 결과
-			String label = "FRONT : " + textDatas[1]
-					+ "\nBACK : " + textDatas[2]
-					+ "\nSIDE : " + textDatas[3];
+			String label = textDatas[0]
+					+ "\n정면 : " + textDatas[1]
+					+ "\n후면 : " + textDatas[2]
+					+ "\n측면 : " + textDatas[3];
 
 			// 신호등 상태
 			String light = "";
@@ -82,9 +83,10 @@ public class TrafficStatusController {
 			list.add(map);
 		}
 		
+		System.out.println(list.get(0).get("imgPath"));
 		// 사고상황 인지
-		byte[] baRequesterCert = fileService.getCertKey(TEXT_DIR + "/global.txt");
-		if (baRequesterCert != null && new String(baRequesterCert).equals("1"))
+		byte[] stream = fileService.getCertKey(TEXT_DIR + "/global.txt");
+		if (stream != null && new String(stream).equals("1"))
 			sendMessage("한성대 사거리 접촉 사고 발생");
 
 		result.put("items", list);

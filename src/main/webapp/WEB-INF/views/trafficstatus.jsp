@@ -21,18 +21,44 @@
 		});
 	}, 1000); // 새로고침 시간 1000ms
 	function createImages(resData) {
-		var $images = $("#trafficimage");
-		var $infos = $("#trafficinfo");
-		var $lights = $("#trafficlight");
-		
-		var trafficDatas = resData.items;
+		var $trafficimage0 = $("#trafficimage0");
+		var $trafficimage1 = $("#trafficimage1");
+		var $trafficimage2 = $("#trafficimage2");
+		var $trafficimage3 = $("#trafficimage3");
+		var $trafficinfo0 = $("#trafficinfo0");
+		var $trafficinfo1 = $("#trafficinfo1");
+		var $trafficinfo2 = $("#trafficinfo2");
+		var $trafficinfo3 = $("#trafficinfo3");
+		var $trafficlight0 = $("#trafficlight0");
+		var $trafficlight1 = $("#trafficlight1");
+		var $trafficlight2 = $("#trafficlight2");
+		var $trafficlight3 = $("#trafficlight3");
 
-		for (var i = 0; i < 4; i++) {
-			$images[i].attr('src', trafficDatas[i].imgPath);
-			$infos[i].text(trafficDatas[i].label);
-			$lights[i].attr('src', trafficDatas[i].light);
-			console.log($images[i].attr('src'));
-		}
+		var trafficDatas = resData.items;
+		var trafficData0 = trafficDatas[0];
+		var trafficData1 = trafficDatas[1];
+		var trafficData2 = trafficDatas[2];
+		var trafficData3 = trafficDatas[3];
+
+		$trafficinfo0.text(trafficData0.label);
+		$trafficlight0.attr('src', trafficData0.light);
+		$trafficimage0.attr('src', trafficData0.imgPath);
+		console.log($trafficimage0.attr('src'));
+		
+		$trafficinfo1.text(trafficData1.label);
+		$trafficlight1.attr('src', trafficData1.light);
+		$trafficimage1.attr('src', trafficData1.imgPath);
+		console.log($trafficimage1.attr('src'));
+
+		$trafficinfo2.text(trafficData2.label);
+		$trafficlight2.attr('src', trafficData2.light);
+		$trafficimage2.attr('src', trafficData2.imgPath);
+		console.log($trafficimage2.attr('src'));
+
+		$trafficinfo3.text(trafficData3.label);
+		$trafficlight3.attr('src', trafficData3.light);
+		$trafficimage3.attr('src', trafficData3.imgPath);
+		console.log($trafficimage3.attr('src'));
 	}
 </script>
 
@@ -40,13 +66,29 @@
 	style="text-align: center; font-size: 18px;">
 
 	<div class="row">
-		<c:forEach var='i' begin='0' end='3' step='1'>
-			<div class="col-md-6">
-				<img class="trafficimage container-fluid" src="/STLC/resources/images/loading.gif" style="float:right;">
-				<p class=trafficinfo></p>
-				<img class="trafficlight" style="float:right; width: 50; height: 50">
-			</div>
-		</c:forEach>
+		<div class="col-md-6">
+			<img id="trafficimage0" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
+			<p id=trafficinfo0></p>
+			<img id="trafficlight0" class="container-fluid" align="center">
+		</div>
+		
+		<div class="col-md-6">
+			<img id="trafficimage1" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
+			<p id=trafficinfo1></p>
+			<img id="trafficlight1" class="container-fluid" align="center">
+		</div>
+		
+		<div class="col-md-6">
+			<img id="trafficimage2" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
+			<p id=trafficinfo2></p>
+			<img id="trafficlight2" class="container-fluid" align="center">
+		</div>
+		
+		<div class="col-md-6">
+			<img id="trafficimage3" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
+			<p id=trafficinfo3></p>
+			<img id="trafficlight3" class="container-fluid" align="center">
+		</div>
 	</div>
 
 </div>

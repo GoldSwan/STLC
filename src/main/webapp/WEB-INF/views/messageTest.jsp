@@ -33,7 +33,7 @@
 										<td align="left" colspan="3"
 											style="border-bottom: 1px solid #808080;">
 											<textarea
-												rows="8" cols="60%" id="msg" name="msg" class="input_msg"
+												rows="8" cols="60%" id="msg" name="msg" class="input_msg container-fluid"
 												tabindex="1" onFocus="this.select()"></textarea></td>
 										<td width="10%"></td>
 									</tr>

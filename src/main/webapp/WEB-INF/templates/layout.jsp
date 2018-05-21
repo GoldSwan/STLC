@@ -52,6 +52,5 @@
 		crossorigin="anonymous"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-	<script src="../../../../assets/js/vendor/holder.min.js"></script>
 </body>
 </html>
