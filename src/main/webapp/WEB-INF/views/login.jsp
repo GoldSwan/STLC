@@ -4,8 +4,7 @@
 
 <div class="jumbotron">
 	<form action="<c:url value="/login" />" method="post" name="login">
-		<input type="hidden" name="${_csrf.parameterName }"
-			value="${_csrf.token }" />
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 
 		<table border="0" bgcolor=#ffffff style="margin: auto">
 			<tr>

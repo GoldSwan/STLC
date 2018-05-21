@@ -14,9 +14,9 @@ public class LoginController {
 			@RequestParam(value = "logout", required = false) String logout, Model model) {
 
 		if (error != null)
-			model.addAttribute("errorMsg", "ID가 일치하지 않습니다.");
+			model.addAttribute("errorMsg", "ID/PASSWORD가 일치하지 않습니다.");
 		if (logout != null)
-			model.addAttribute("logoutMsg", "PASSWORD가 일치하지 않습니다.");
+			model.addAttribute("logoutMsg", "로그아웃 되었습니다.");
 
 		return "login";
 	}

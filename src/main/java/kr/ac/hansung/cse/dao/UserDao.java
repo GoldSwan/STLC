@@ -1,3 +1,4 @@
+
 package kr.ac.hansung.cse.dao;
 
 import java.sql.ResultSet;
@@ -43,7 +44,7 @@ public class UserDao {
 		String token = user.getToken();
 		
 		String sqlstatement = "insert into users (token) values (?)";
-				
+
 		jdbcTemplate.update( sqlstatement, new Object[] {token} );
 	}
 }

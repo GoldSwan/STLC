@@ -19,8 +19,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
 	</definition>
 
-	<definition name="messageSetting" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/messageSetting.jsp" />
+	<definition name="messageTest" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/messageTest.jsp" />
 	</definition>
 	
 	<definition name="searchdata" extends="base">
