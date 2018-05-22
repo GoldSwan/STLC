@@ -42,30 +42,30 @@
 		var trafficData3 = trafficDatas[3];
 		var trafficData4 = trafficDatas[4];
 
-		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficDatas4.remaintime + "초");
+		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime + "초");
 
-		$trafficinfo0.text(trafficData0.label);
-		$trafficlight0.attr('src', trafficData0.light);
-		$trafficimage0.attr('src', trafficData0.imgPath);
+		$trafficinfo0.text(trafficData1.label);
+		$trafficlight0.attr('src', trafficData1.light);
+		$trafficimage0.attr('src', trafficData1.imgPath);
 		
-		$trafficinfo1.text(trafficData1.label);
-		$trafficlight1.attr('src', trafficData1.light);
-		$trafficimage1.attr('src', trafficData1.imgPath);
+		$trafficinfo1.text(trafficData2.label);
+		$trafficlight1.attr('src', trafficData2.light);
+		$trafficimage1.attr('src', trafficData2.imgPath);
 
-		$trafficinfo2.text(trafficData2.label);
-		$trafficlight2.attr('src', trafficData2.light);
-		$trafficimage2.attr('src', trafficData2.imgPath);
+		$trafficinfo2.text(trafficData3.label);
+		$trafficlight2.attr('src', trafficData3.light);
+		$trafficimage2.attr('src', trafficData3.imgPath);
 
-		$trafficinfo3.text(trafficData3.label);
-		$trafficlight3.attr('src', trafficData3.light);
-		$trafficimage3.attr('src', trafficData3.imgPath);
+		$trafficinfo3.text(trafficData4.label);
+		$trafficlight3.attr('src', trafficData4.light);
+		$trafficimage3.attr('src', trafficData4.imgPath);
 	}
 </script>
 
 <div id="t" class="jumbotron"
 	style="text-align: center; font-size: 18px;">
 	
-	<div id="trafficremaintime" class="container-fluid"></div>
+	<p id="trafficremaintime" class="container-fluid"></p>
 
 	<div class="row">
 		<div class="col-md-6">

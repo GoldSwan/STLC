@@ -49,6 +49,20 @@ public class TrafficStatusController {
 		Map<String, List<Map<String, String>>> result = new HashMap<>();
 		List<Map<String, String>> list = new ArrayList<>(4);
 
+		// 사고상황 인지
+		byte[] stream = fileService.getCertKey(TEXT_DIR + "/global.txt");
+		if (stream != null) {
+			String[] textDatas = new String(stream).split(" ");
+			if (textDatas[0].equals("1"))
+				sendMessage("한성대 사거리 접촉 사고 발생");
+			
+			/* map에 저장 */
+			Map<String, String> map = new HashMap<>();
+			map.put("remaintime", textDatas[1]);
+			list.add(map);
+		}
+		result.put("items", list);
+		
 		for (int i = 0; i < 4; i++) {
 			/* text 파일 */
 			byte[] baRequesterCert = fileService.getCertKey(TEXT_DIR + EWSN[i] + ".txt");
@@ -82,20 +96,6 @@ public class TrafficStatusController {
 			map.put("light", light);
 			list.add(map);
 		}
-
-		System.out.println(list.get(0).get("imgPath"));
-		// 사고상황 인지
-		byte[] stream = fileService.getCertKey(TEXT_DIR + "/global.txt");
-		if (stream != null) {
-			String[] textDatas = new String(stream).split(" ");
-			if (textDatas[0].equals("1"))
-				sendMessage("한성대 사거리 접촉 사고 발생");
-			Map<String, String> map = new HashMap<>();
-			map.put("remaintime", textDatas[1]);
-			list.add(map);
-		}
-
-		result.put("items", list);
 
 		return result;
 	}
