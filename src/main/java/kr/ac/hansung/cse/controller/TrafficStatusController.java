@@ -82,12 +82,18 @@ public class TrafficStatusController {
 			map.put("light", light);
 			list.add(map);
 		}
-		
+
 		System.out.println(list.get(0).get("imgPath"));
 		// 사고상황 인지
 		byte[] stream = fileService.getCertKey(TEXT_DIR + "/global.txt");
-		if (stream != null && new String(stream).equals("1"))
-			sendMessage("한성대 사거리 접촉 사고 발생");
+		if (stream != null) {
+			String[] textDatas = new String(stream).split(" ");
+			if (textDatas[0].equals("1"))
+				sendMessage("한성대 사거리 접촉 사고 발생");
+			Map<String, String> map = new HashMap<>();
+			map.put("remaintime", textDatas[1]);
+			list.add(map);
+		}
 
 		result.put("items", list);
 

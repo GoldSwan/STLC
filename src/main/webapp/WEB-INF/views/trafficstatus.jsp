@@ -21,6 +21,7 @@
 		});
 	}, 1000); // 새로고침 시간 1000ms
 	function createImages(resData) {
+		var $trafficremaintime = $("#trafficremaintime");
 		var $trafficimage0 = $("#trafficimage0");
 		var $trafficimage1 = $("#trafficimage1");
 		var $trafficimage2 = $("#trafficimage2");
@@ -39,31 +40,32 @@
 		var trafficData1 = trafficDatas[1];
 		var trafficData2 = trafficDatas[2];
 		var trafficData3 = trafficDatas[3];
+		var trafficData4 = trafficDatas[4];
+
+		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficDatas4.remaintime + "초");
 
 		$trafficinfo0.text(trafficData0.label);
 		$trafficlight0.attr('src', trafficData0.light);
 		$trafficimage0.attr('src', trafficData0.imgPath);
-		console.log($trafficimage0.attr('src'));
 		
 		$trafficinfo1.text(trafficData1.label);
 		$trafficlight1.attr('src', trafficData1.light);
 		$trafficimage1.attr('src', trafficData1.imgPath);
-		console.log($trafficimage1.attr('src'));
 
 		$trafficinfo2.text(trafficData2.label);
 		$trafficlight2.attr('src', trafficData2.light);
 		$trafficimage2.attr('src', trafficData2.imgPath);
-		console.log($trafficimage2.attr('src'));
 
 		$trafficinfo3.text(trafficData3.label);
 		$trafficlight3.attr('src', trafficData3.light);
 		$trafficimage3.attr('src', trafficData3.imgPath);
-		console.log($trafficimage3.attr('src'));
 	}
 </script>
 
 <div id="t" class="jumbotron"
 	style="text-align: center; font-size: 18px;">
+	
+	<div id="trafficremaintime" class="container-fluid"></div>
 
 	<div class="row">
 		<div class="col-md-6">
