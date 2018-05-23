@@ -60,6 +60,9 @@ public class TrafficStatusController {
 			Map<String, String> map = new HashMap<>();
 			map.put("remaintime", textDatas[1]);
 			list.add(map);
+			
+			map.put("totaltime", textDatas[2]);
+			list.add(map);
 		}
 		result.put("items", list);
 		

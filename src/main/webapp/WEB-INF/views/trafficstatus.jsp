@@ -22,6 +22,7 @@
 	}, 1000); // 새로고침 시간 1000ms
 	function createImages(resData) {
 		var $trafficremaintime = $("#trafficremaintime");
+		var $traffictotaltime = $("#traffictotaltime");
 		var $trafficimage0 = $("#trafficimage0");
 		var $trafficimage1 = $("#trafficimage1");
 		var $trafficimage2 = $("#trafficimage2");
@@ -41,56 +42,80 @@
 		var trafficData2 = trafficDatas[2];
 		var trafficData3 = trafficDatas[3];
 		var trafficData4 = trafficDatas[4];
+		var trafficData5 = trafficDatas[5];
 
-		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime + "초");
+		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData1.totaltime + "초");
 
-		$trafficinfo0.text(trafficData1.label);
-		$trafficlight0.attr('src', trafficData1.light);
-		$trafficimage0.attr('src', trafficData1.imgPath);
+		$trafficinfo0.text(trafficData2.label);
+		$trafficlight0.attr('src', trafficData2.light);
+		$trafficimage0.attr('src', trafficData2.imgPath);
 		
-		$trafficinfo1.text(trafficData2.label);
-		$trafficlight1.attr('src', trafficData2.light);
-		$trafficimage1.attr('src', trafficData2.imgPath);
+		$trafficinfo1.text(trafficData3.label);
+		$trafficlight1.attr('src', trafficData3.light);
+		$trafficimage1.attr('src', trafficData3.imgPath);
 
-		$trafficinfo2.text(trafficData3.label);
-		$trafficlight2.attr('src', trafficData3.light);
-		$trafficimage2.attr('src', trafficData3.imgPath);
+		$trafficinfo2.text(trafficData4.label);
+		$trafficlight2.attr('src', trafficData4.light);
+		$trafficimage2.attr('src', trafficData4.imgPath);
 
-		$trafficinfo3.text(trafficData4.label);
-		$trafficlight3.attr('src', trafficData4.light);
-		$trafficimage3.attr('src', trafficData4.imgPath);
+		$trafficinfo3.text(trafficData5.label);
+		$trafficlight3.attr('src', trafficData5.light);
+		$trafficimage3.attr('src', trafficData5.imgPath);
 	}
 </script>
-
 <div id="t" class="jumbotron"
 	style="text-align: center; font-size: 18px;">
-	
-	<p id="trafficremaintime" class="container-fluid"></p>
 
 	<div class="row">
-		<div class="col-md-6">
-			<img id="trafficimage0" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
-			<p id=trafficinfo0></p>
-			<img id="trafficlight0" class="container-fluid" align="center">
+<!-- ---------------------------------------north------------------------------------ -->		
+		<div class="col-md-4">
 		</div>
-		
-		<div class="col-md-6">
-			<img id="trafficimage1" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
-			<p id=trafficinfo1></p>
-			<img id="trafficlight1" class="container-fluid" align="center">
-		</div>
-		
-		<div class="col-md-6">
-			<img id="trafficimage2" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
-			<p id=trafficinfo2></p>
-			<img id="trafficlight2" class="container-fluid" align="center">
-		</div>
-		
-		<div class="col-md-6">
-			<img id="trafficimage3" class="container-fluid" src="<c:url value="/resources/images/loading.gif" />" style="float:right;">
-			<p id=trafficinfo3></p>
-			<img id="trafficlight3" class="container-fluid" align="center">
-		</div>
-	</div>
 
+		<div class="col-md-4">
+			<img id="trafficlight3" class="container-fluid" align="center" height="60">
+			<img id="trafficimage3" class="container-fluid"
+				src="<c:url value="/resources/images/loading.gif" />"
+				style="float: right;">
+			<p id=trafficinfo3>NORTH</p>
+		</div>
+
+		<div class="col-md-4">
+		</div>
+<!-- ----------------------------------east,west------------------------------------- -->
+		<div class="col-md-4">
+			<img id="trafficlight1" class="container-fluid" align="center" height="60">
+			<img id="trafficimage1" class="container-fluid"
+				src="<c:url value="/resources/images/loading.gif" />"
+				style="float: right;">
+			<p id=trafficinfo1>WEST</p>
+		</div>
+
+		<div class="col-md-4" vertical-align="middle">
+				<br><br><br><br><br>
+				<p id="trafficremaintime" class="container-fluid" vertical-align="middle">traffic remain time</p>
+		</div>
+
+		<div class="col-md-4">
+			<img id="trafficlight0" class="container-fluid" align="center" height="60">
+			<img id="trafficimage0" class="container-fluid"
+				src="<c:url value="/resources/images/loading.gif" />"
+				style="float: right;">
+			<p id=trafficinfo0>EAST</p>
+		</div>
+<!-- ---------------------------------------south------------------------------------ -->
+		<div class="col-md-4">
+		</div>
+
+		<div class="col-md-4">
+			<img id="trafficlight2" class="container-fluid" align="center" height="60">
+			<img id="trafficimage2" class="container-fluid"
+				src="<c:url value="/resources/images/loading.gif" />"
+				style="float: right;">
+			<p id=trafficinfo2>SOUTH</p>
+		</div>
+
+		<div class="col-md-4">
+		</div>
+<!-- -------------------------------------------------------------------------------- -->
+	</div>
 </div>
