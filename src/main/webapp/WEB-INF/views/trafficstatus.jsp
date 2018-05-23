@@ -42,10 +42,13 @@
 		var trafficData2 = trafficDatas[2];
 		var trafficData3 = trafficDatas[3];
 		var trafficData4 = trafficDatas[4];
-		var trafficData5 = trafficDatas[5];
 
-		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData1.totaltime + "초");
+		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
 
+		$trafficinfo3.text(trafficData1.label);
+		$trafficlight3.attr('src', trafficData1.light);
+		$trafficimage3.attr('src', trafficData1.imgPath);
+		
 		$trafficinfo0.text(trafficData2.label);
 		$trafficlight0.attr('src', trafficData2.light);
 		$trafficimage0.attr('src', trafficData2.imgPath);
@@ -57,10 +60,6 @@
 		$trafficinfo2.text(trafficData4.label);
 		$trafficlight2.attr('src', trafficData4.light);
 		$trafficimage2.attr('src', trafficData4.imgPath);
-
-		$trafficinfo3.text(trafficData5.label);
-		$trafficlight3.attr('src', trafficData5.light);
-		$trafficimage3.attr('src', trafficData5.imgPath);
 	}
 </script>
 <div id="t" class="jumbotron"

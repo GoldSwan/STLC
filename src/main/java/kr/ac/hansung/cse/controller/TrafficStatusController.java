@@ -59,12 +59,9 @@ public class TrafficStatusController {
 			/* map에 저장 */
 			Map<String, String> map = new HashMap<>();
 			map.put("remaintime", textDatas[1]);
-			list.add(map);
-			
 			map.put("totaltime", textDatas[2]);
 			list.add(map);
 		}
-		result.put("items", list);
 		
 		for (int i = 0; i < 4; i++) {
 			/* text 파일 */
@@ -99,6 +96,8 @@ public class TrafficStatusController {
 			map.put("light", light);
 			list.add(map);
 		}
+
+		result.put("items", list);
 
 		return result;
 	}
