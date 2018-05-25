@@ -10,7 +10,7 @@ import kr.ac.hansung.cse.model.User;
 import kr.ac.hansung.cse.service.UserService;
 
 @Controller
-public class RegisterController {
+public class TokenRegisterController {
 
 	@Autowired
 	private UserService userService;

@@ -6,11 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,18 +41,20 @@ public class TrafficStatusController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/trafficstatus")
-	public String traffic() {
+	@RequestMapping(value = "/trafficstatus/{id}")
+	public String traffic(Model model, @PathVariable("id") int id) {
+		model.addAttribute("id", id);
 		return "trafficstatus";
 	}
 
-	@RequestMapping(value = "/ajaxtrafficstatus.do")
-	public @ResponseBody Map<String, List<Map<String, String>>> getBoardList(Locale locale, Model model, HttpServletRequest request) throws IOException {
+	@RequestMapping(value = "/ajaxtrafficstatus.do/{id}")
+	public @ResponseBody Map<String, List<Map<String, String>>> getBoardList(
+			Locale locale, Model model, HttpServletRequest request, @PathVariable("id") int id) throws IOException {
 		Map<String, List<Map<String, String>>> result = new HashMap<>();
 		List<Map<String, String>> list = new ArrayList<>(4);
 
 		// 사고상황 인지
-		byte[] stream = fileService.getCertKey(TEXT_DIR + "/global.txt");
+		byte[] stream = fileService.getCertKey(TEXT_DIR + "/" + id + "/global.txt");
 		if (stream != null) {
 			String[] textDatas = new String(stream).split(" ");
 			if (textDatas[0].equals("1"))
@@ -65,14 +69,14 @@ public class TrafficStatusController {
 		
 		for (int i = 0; i < 4; i++) {
 			/* text 파일 */
-			byte[] baRequesterCert = fileService.getCertKey(TEXT_DIR + EWSN[i] + ".txt");
+			byte[] baRequesterCert = fileService.getCertKey(TEXT_DIR + "/" + id + EWSN[i] + ".txt");
 			if (baRequesterCert == null)
 				continue;
 
 			// 실시간 이미지
 			String text = new String(baRequesterCert); //byte->string 변환
 			String[] textDatas = text.split(" ");
-			String imgPath = FILE_DIR + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
+			String imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
 
 			// 분석 결과
 			String label = textDatas[0]

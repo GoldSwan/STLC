@@ -9,7 +9,7 @@
 	var auto_refresh = setInterval(function testajax() {
 		jqueryObj.ajax({
 			type : 'GET',
-			url : '/STLC/ajaxtrafficstatus.do',
+			url : '/STLC/ajaxtrafficstatus.do/' + ${id},
 			dataType : "json",
 			success : function(resData) {
 				createImages(resData);
@@ -19,7 +19,7 @@
 				//alert('ajax 통신에러');
 			}
 		});
-	}, 1000); // 새로고침 시간 1000ms
+	}, 100); // 새로고침 시간 1000ms
 	function createImages(resData) {
 		var $trafficremaintime = $("#trafficremaintime");
 		var $traffictotaltime = $("#traffictotaltime");

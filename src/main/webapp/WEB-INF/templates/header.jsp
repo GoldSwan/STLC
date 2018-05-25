@@ -27,8 +27,8 @@
 	</button>
 	<div class="dropdown-menu" style="width: 100%; margin: 0 auto;">
 		<div style="width: 100px; margin: 0 auto;">
-			<a class="dropdown-item" href="<c:url value="/trafficstatus" />">한성대 사거리</a>
-			<a class="dropdown-item" href="<c:url value="/trafficstatus" />">미아 삼거리</a>
+			<a class="dropdown-item" href="<c:url value="/trafficstatus/0" />">한성대 사거리</a>
+			<a class="dropdown-item" href="<c:url value="/trafficstatus/1" />">미아 삼거리</a>
 			<a class="dropdown-item" href="<c:url value="/messageTest" />">메세지 테스트</a>
 		</div>
 	</div>
