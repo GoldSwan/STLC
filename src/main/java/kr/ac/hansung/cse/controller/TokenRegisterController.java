@@ -25,6 +25,6 @@ public class TokenRegisterController {
 			userService.insert(user);
 		}
 
-		return "home";
+		return "empty";
 	}
 }
