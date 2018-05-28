@@ -24,10 +24,8 @@ public class FileUploadController {
 	
 	@RequestMapping(value = "/upload/{serverId}", method = RequestMethod.POST)
 	String uploadFileHandler(HttpServletRequest request, @PathVariable("serverId") int serverId, @RequestParam("file") MultipartFile file) {
-
-		if (file.isEmpty()) {
+		if (file.isEmpty())
 			return "searchdata";
-		}
 
 		String rootDir = request.getSession().getServletContext().getRealPath("/");
 		Path savePath = Paths.get(rootDir + "/resources/files/" + serverId + "/" + file.getOriginalFilename());
@@ -38,6 +36,6 @@ public class FileUploadController {
 			return "searchdata";
 		}
 		
-		return "home";
+		return "";
 	}
 }

@@ -27,10 +27,14 @@
 		var $trafficimage1 = $("#trafficimage1");
 		var $trafficimage2 = $("#trafficimage2");
 		var $trafficimage3 = $("#trafficimage3");
-		var $trafficinfo0 = $("#trafficinfo0");
-		var $trafficinfo1 = $("#trafficinfo1");
-		var $trafficinfo2 = $("#trafficinfo2");
-		var $trafficinfo3 = $("#trafficinfo3");
+		var $timeLabel0 = $("#timeLabel0");
+		var $timeLabel1 = $("#timeLabel1");
+		var $timeLabel2 = $("#timeLabel2");
+		var $timeLabel3 = $("#timeLabel3");
+		var $dirLabel0 = $("#dirLabel0");
+		var $dirLabel1 = $("#dirLabel1");
+		var $dirLabel2 = $("#dirLabel2");
+		var $dirLabel3 = $("#dirLabel3");
 		var $trafficlight0 = $("#trafficlight0");
 		var $trafficlight1 = $("#trafficlight1");
 		var $trafficlight2 = $("#trafficlight2");
@@ -45,19 +49,23 @@
 
 		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
 
-		$trafficinfo3.text(trafficData1.label);
+		$timeLabel3.text(trafficData1.timeLabel);
+		$dirLabel3.text(trafficData1.dirLabel);
 		$trafficlight3.attr('src', trafficData1.light);
 		$trafficimage3.attr('src', trafficData1.imgPath);
 		
-		$trafficinfo0.text(trafficData2.label);
+		$timeLabel0.text(trafficData2.timeLabel);
+		$dirLabel0.text(trafficData2.dirLabel);
 		$trafficlight0.attr('src', trafficData2.light);
 		$trafficimage0.attr('src', trafficData2.imgPath);
 		
-		$trafficinfo1.text(trafficData3.label);
+		$timeLabel1.text(trafficData3.timeLabel);
+		$dirLabel1.text(trafficData3.dirLabel);
 		$trafficlight1.attr('src', trafficData3.light);
 		$trafficimage1.attr('src', trafficData3.imgPath);
 
-		$trafficinfo2.text(trafficData4.label);
+		$timeLabel2.text(trafficData4.timeLabel);
+		$dirLabel2.text(trafficData4.dirLabel);
 		$trafficlight2.attr('src', trafficData4.light);
 		$trafficimage2.attr('src', trafficData4.imgPath);
 	}
@@ -75,7 +83,8 @@
 			<img id="trafficimage3" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
-			<p id=trafficinfo3>NORTH</p>
+			<p id=timeLabel3>NORTH</p>
+			<p id=dirLabel3></p>
 		</div>
 
 		<div class="col-md-4">
@@ -86,7 +95,8 @@
 			<img id="trafficimage1" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
-			<p id=trafficinfo1>WEST</p>
+			<p id=timeLabel1>WEST</p>
+			<p id=dirLabel1></p>
 		</div>
 
 		<div class="col-md-4" vertical-align="middle">
@@ -99,7 +109,8 @@
 			<img id="trafficimage0" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
-			<p id=trafficinfo0>EAST</p>
+			<p id=timeLabel0>EAST</p>
+			<p id=dirLabel0></p>
 		</div>
 <!-- ---------------------------------------south------------------------------------ -->
 		<div class="col-md-4">
@@ -110,7 +121,8 @@
 			<img id="trafficimage2" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
-			<p id=trafficinfo2>SOUTH</p>
+			<p id=timeLabel2>SOUTH</p>
+			<p id=dirLabel2></p>
 		</div>
 
 		<div class="col-md-4">

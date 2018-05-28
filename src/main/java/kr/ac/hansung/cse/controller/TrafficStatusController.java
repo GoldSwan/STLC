@@ -41,6 +41,8 @@ public class TrafficStatusController {
 	@Autowired
 	private UserService userService;
 
+	private Map<String, String> texttimes = new HashMap<>();
+	
 	@RequestMapping(value = "/trafficstatus/{id}")
 	public String traffic(Model model, @PathVariable("id") int id) {
 		model.addAttribute("id", id);
@@ -52,7 +54,7 @@ public class TrafficStatusController {
 			Locale locale, Model model, HttpServletRequest request, @PathVariable("id") int id) throws IOException {
 		Map<String, List<Map<String, String>>> result = new HashMap<>();
 		List<Map<String, String>> list = new ArrayList<>(4);
-
+		
 		// 사고상황 인지
 		byte[] stream = fileService.getCertKey(TEXT_DIR + "/" + id + "/global.txt");
 		if (stream != null) {
@@ -76,13 +78,26 @@ public class TrafficStatusController {
 			// 실시간 이미지
 			String text = new String(baRequesterCert); //byte->string 변환
 			String[] textDatas = text.split(" ");
-			String imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
+			String imgPath;
+			if (!texttimes.containsKey(Integer.toString(i))) {
+				imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
+				texttimes.put(Integer.toString(i), textDatas[0]);
+			} else {
+				if(!(texttimes.get(Integer.toString(i)).equals(textDatas[0])))
+					imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
+				else
+					continue;
+			}
 
 			// 분석 결과
-			String label = textDatas[0]
-					+ "\n정면 : " + textDatas[1]
-					+ "\n후면 : " + textDatas[2]
-					+ "\n측면 : " + textDatas[3];
+			int time = Integer.parseInt(textDatas[0]);
+			int hour = time / 3600 % 24 + 9;
+			int min = (time % 3600) / 60;
+			int sec = time % 60;
+			String timeLabel = "" + hour + "시 " + min + "분 " + sec + "초"; 
+			String dirLabel = "정면 : " + textDatas[1]
+							+ "대 후면 : " + textDatas[2]
+							+ "대 측면 : " + textDatas[3] + "대";
 
 			// 신호등 상태
 			String light = "";
@@ -96,7 +111,8 @@ public class TrafficStatusController {
 			/* map에 저장 */
 			Map<String, String> map = new HashMap<>();
 			map.put("imgPath", imgPath);
-			map.put("label", label);
+			map.put("timeLabel", timeLabel);
+			map.put("dirLabel", dirLabel);
 			map.put("light", light);
 			list.add(map);
 		}
