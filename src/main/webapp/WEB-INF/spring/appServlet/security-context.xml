@@ -28,6 +28,8 @@
 		<security:intercept-url access="permitAll"
 			pattern="/RegisterKey" />
 		<security:intercept-url access="permitAll"
+			pattern="/upload/**" />
+		<security:intercept-url access="permitAll"
 			pattern="/resources/**" />
 		<security:intercept-url access="isAuthenticated()"
 			pattern="/**" />
