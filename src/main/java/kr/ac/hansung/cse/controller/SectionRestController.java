@@ -1,5 +1,6 @@
 package kr.ac.hansung.cse.controller;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,12 @@ public class SectionRestController {
 		Section section = new Section();
 		section.setName(sectionName);
 		sectionService.saveOrUpdateSection(section);
+		
+		new File("/STLC/resources/files/" + section.getId()).mkdir();
+
 		return new ResponseEntity<>(section, HttpStatus.OK);
 	}
-	
+
 	// READ
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Section>> getSections() {
@@ -57,6 +61,9 @@ public class SectionRestController {
 	public ResponseEntity<Void> deleteSection(@PathVariable("sectionId") int sectionId) {
 		Section section = sectionService.getSectionById(sectionId);
 		sectionService.deleteSection(section);
+		
+		new File("/STLC/resources/files/" + sectionId).delete();
+
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
