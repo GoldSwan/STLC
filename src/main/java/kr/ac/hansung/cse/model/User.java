@@ -22,7 +22,7 @@ public class User {
 
 	private String password;
 
-	private boolean enabled = false;
+	private int enabled;
 
 	private String authority;
 }
