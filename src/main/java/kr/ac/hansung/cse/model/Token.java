@@ -13,16 +13,10 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-public class User {
+public class Token {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	private String username;
-
-	private String password;
-
-	private boolean enabled = false;
-
-	private String authority;
+	
+	private String value;
 }

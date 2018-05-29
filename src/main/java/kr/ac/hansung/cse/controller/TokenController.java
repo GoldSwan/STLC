@@ -6,25 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.ac.hansung.cse.model.User;
-import kr.ac.hansung.cse.service.UserService;
+import kr.ac.hansung.cse.model.Token;
+import kr.ac.hansung.cse.service.TokenService;
 
 @Controller
-public class TokenRegisterController {
+public class TokenController {
 
 	@Autowired
-	private UserService userService;
-
-	@Autowired
-	private User user;
+	private TokenService tokenService;
 
 	@RequestMapping(value = "/RegisterKey", method = RequestMethod.POST)
-	public String registerKey(@RequestParam("Token") String token) {
-		if (token != null) {
-			user.setToken(token);
-			userService.insert(user);
+	public String registerKey(@RequestParam("Token") String value) {
+		if (value != null) {
+			Token token = new Token();
+			token.setValue(value);
+			tokenService.insertToken(token);
 		}
-
 		return "empty";
 	}
 }

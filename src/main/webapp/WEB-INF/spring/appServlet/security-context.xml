@@ -10,15 +10,15 @@
 	<context:annotation-config></context:annotation-config>
 	
 	<bean id="csrfRequestMatcher"
-		class="kr.ac.hansung.cse.model.CsrfRequestMatcher">
+		class="kr.ac.hansung.cse.controller.CsrfRequestMatcher">
 	</bean>
 
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service
 				data-source-ref="dataSource"
-				users-by-username-query="SELECT username, password, enabled FROM admin WHERE username=?"
-				authorities-by-username-query="SELECT username, authority FROM auths WHERE username=?" />
+				users-by-username-query="SELECT username, password, enabled FROM user WHERE username=?"
+				authorities-by-username-query="SELECT username, authority FROM user WHERE username=?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 

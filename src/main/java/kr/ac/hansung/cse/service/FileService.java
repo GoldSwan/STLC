@@ -5,7 +5,7 @@ import java.security.AccessController;
 
 import org.springframework.stereotype.Service;
 
-import kr.ac.hansung.cse.model.PriviegedExceptionAction_Model;
+import kr.ac.hansung.cse.controller.PriviegedExceptionAction_Model;
 
 @Service
 public class FileService {
