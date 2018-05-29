@@ -3,6 +3,8 @@ package kr.ac.hansung.cse.controller;
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +26,13 @@ public class SectionRestController {
 	
 	// CREATE
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResponseEntity<Section> saveSection(@RequestBody() String sectionName) {
+	public ResponseEntity<Section> saveSection(HttpServletRequest request, @RequestBody() String sectionName) {
 		Section section = new Section();
 		section.setName(sectionName);
 		sectionService.saveOrUpdateSection(section);
-		
-		new File("/STLC/resources/files/" + section.getId()).mkdir();
+
+		File file = new File(request.getRealPath("/resources/files") + "/" + section.getId());
+		file.mkdir();
 
 		return new ResponseEntity<>(section, HttpStatus.OK);
 	}
@@ -58,11 +61,14 @@ public class SectionRestController {
 	}
 	
 	@RequestMapping(value = "/{sectionId}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteSection(@PathVariable("sectionId") int sectionId) {
+	public ResponseEntity<Void> deleteSection(HttpServletRequest request, @PathVariable("sectionId") int sectionId) {
 		Section section = sectionService.getSectionById(sectionId);
 		sectionService.deleteSection(section);
 		
-		new File("/STLC/resources/files/" + sectionId).delete();
+		File file = new File(request.getRealPath("/resources/files") + "/" + sectionId);
+		for (File f : file.listFiles())
+			f.delete();
+		file.delete();
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
