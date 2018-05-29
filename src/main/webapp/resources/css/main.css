@@ -25,8 +25,32 @@ div a.logout:hover {
 	background-color: #fdd835
 }
 
+.dropdown div.dropdown-toggle {
+	border-radius: 5px;
+}
+
 .dropdown div.dropdown-toggle:hover {
 	color: white;
+	cursor: pointer;
+}
+
+.dropdown > a {
+	color: white;
+	background-color: #fdd835
+}
+
+.dropdown > a:hover {
+	color: #fdd835;
+}
+
+.dropdown a:active {
+	position: relative;
+	top: 1px;
+}
+
+.dropdown-menu div {
+	width: 180px;
+	margin: 0 auto;
 }
 
 .dropdown-item {
@@ -35,7 +59,20 @@ div a.logout:hover {
 
 .dropdown-item:hover {
 	background-color: #fdd835;
+}
+
+.dropdown-item:active {
+	position: relative;
+	top: 1px;
+}
+
+div > i:hover {
 	color: white;
+}
+
+div > i:active {
+	position: relative;
+	top: 1px;
 }
 
 .jumbotron {

@@ -12,11 +12,11 @@ public class TrafficRestController {
 
 	@Autowired
 	private MessageController messageController;
-	
+
 	@RequestMapping(value="/{id}")
 	public String getTraffics(Model model, @PathVariable("id") int id) {
 		model.addAttribute("id", id);
 		return "trafficstatus";
 	}
-	
+
 }
