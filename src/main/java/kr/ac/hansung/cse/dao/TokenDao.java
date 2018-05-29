@@ -25,7 +25,7 @@ public class TokenDao {
 	@SuppressWarnings("unchecked")
 	public List<String> getTokenValues() {
 		Session session = sessionFactory.getCurrentSession();
-		TypedQuery<String> query = session.createQuery("value FROM Token");
+		TypedQuery<String> query = session.createQuery("SELECT T.value FROM Token T");
 		return query.getResultList();
 	}
 
