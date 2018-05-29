@@ -11,7 +11,12 @@ public class PriviegedExceptionAction_Model implements PrivilegedExceptionAction
 		this.filePath = filePath;
 	}
 
-	public Object run() throws FileNotFoundException {
-		return new FileInputStream(filePath);
+	public Object run() {
+		try {
+			return new FileInputStream(filePath);
+		} catch (FileNotFoundException e) {
+			//e.printStackTrace();
+		}
+		return null;
 	}
 }

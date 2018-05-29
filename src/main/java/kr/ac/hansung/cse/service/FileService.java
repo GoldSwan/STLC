@@ -21,7 +21,7 @@ public class FileService {
 			fis.read(baRequesterCert, 0, size);
 			fis.close();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			//ex.printStackTrace();
 		}
 		return baRequesterCert;
 	}

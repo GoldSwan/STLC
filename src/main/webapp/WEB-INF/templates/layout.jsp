@@ -33,13 +33,11 @@
 <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico"/>"/>
 </head>
 <body>
-
 	<div>	
 		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="body" />
 		<tiles:insertAttribute name="footer" />
 	</div>
-
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -51,6 +49,5 @@
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		crossorigin="anonymous"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 </body>
 </html>

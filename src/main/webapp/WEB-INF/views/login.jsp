@@ -2,14 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="jumbotron">
+<div class="jumbotron" style="margin-bottom: 0px">
 	<form action="<c:url value="/login" />" method="post" name="login">
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 
-		<table border="0" bgcolor=#ffffff style="margin: auto">
+		<table border="0" bgcolor=#ffffff style="margin: auto; border-radius: 25px;">
 			<tr>
 				<td align=center>
-					<table border="0" cellpadding="0" cellspacing="0" width=90%>
+					<table border="0" cellpadding="0" cellspacing="0">
 						<tr>
 							<td width=500 align=center>
 								<table border="0" cellSpacing=0 cellPadding=0
@@ -21,7 +21,7 @@
 
 									<tr>
 										<td width="10%"></td>
-										<td class="TEXTFONT-BLACK"
+										<td class="label-login"
 											style="padding-left: 30px; padding-right: 0px; border-bottom: 1px solid #808080; color: #808080;">아이디</td>
 										<td align="left" colspan="2"
 											style="border-bottom: 1px solid #808080;">
@@ -36,7 +36,7 @@
 
 									<tr>
 										<td width="10%"></td>
-										<td class="TEXTFONT-BLACK"
+										<td class="label-login"
 											style="padding-left: 30px; padding-right: 0px; border-bottom: 1px solid #808080; color: #808080;">패스워드</td>
 										<td align="left" colspan="2"
 											style="border-bottom: 1px solid #808080;">

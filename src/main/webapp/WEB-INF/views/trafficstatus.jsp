@@ -21,8 +21,7 @@
 		});
 	}, 100); // 새로고침 시간 1000ms
 	function createImages(resData) {
-		var $trafficremaintime = $("#trafficremaintime");
-		var $traffictotaltime = $("#traffictotaltime");
+		var $remainTime = $("#remainTime");
 		var $trafficimage0 = $("#trafficimage0");
 		var $trafficimage1 = $("#trafficimage1");
 		var $trafficimage2 = $("#trafficimage2");
@@ -47,51 +46,36 @@
 		var trafficData3 = trafficDatas[3];
 		var trafficData4 = trafficDatas[4];
 
-		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
+		$remainTime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
 
-		$timeLabel3.text(trafficData1.timeLabel);
-		$dirLabel3.text(trafficData1.dirLabel);
-		$trafficlight3.attr('src', trafficData1.light);
-		$trafficimage3.attr('src', trafficData1.imgPath);
+		$timeLabel0.text(trafficData1.timeLabel);
+		$dirLabel0.text(trafficData1.dirLabel);
+		$trafficlight0.attr('src', trafficData1.light);
+		$trafficimage0.attr('src', trafficData1.imgPath);
 		
-		$timeLabel0.text(trafficData2.timeLabel);
-		$dirLabel0.text(trafficData2.dirLabel);
-		$trafficlight0.attr('src', trafficData2.light);
-		$trafficimage0.attr('src', trafficData2.imgPath);
+		$timeLabel1.text(trafficData2.timeLabel);
+		$dirLabel1.text(trafficData2.dirLabel);
+		$trafficlight1.attr('src', trafficData2.light);
+		$trafficimage1.attr('src', trafficData2.imgPath);
 		
-		$timeLabel1.text(trafficData3.timeLabel);
-		$dirLabel1.text(trafficData3.dirLabel);
-		$trafficlight1.attr('src', trafficData3.light);
-		$trafficimage1.attr('src', trafficData3.imgPath);
+		$timeLabel2.text(trafficData3.timeLabel);
+		$dirLabel2.text(trafficData3.dirLabel);
+		$trafficlight2.attr('src', trafficData3.light);
+		$trafficimage2.attr('src', trafficData3.imgPath);
 
-		$timeLabel2.text(trafficData4.timeLabel);
-		$dirLabel2.text(trafficData4.dirLabel);
-		$trafficlight2.attr('src', trafficData4.light);
-		$trafficimage2.attr('src', trafficData4.imgPath);
+		$timeLabel3.text(trafficData4.timeLabel);
+		$dirLabel3.text(trafficData4.dirLabel);
+		$trafficlight3.attr('src', trafficData4.light);
+		$trafficimage3.attr('src', trafficData4.imgPath);
 	}
 </script>
 <div id="t" class="jumbotron"
 	style="text-align: center; font-size: 18px;">
 
 	<div class="row">
-<!-- ---------------------------------------north------------------------------------ -->		
-		<div class="col-md-4">
-		</div>
-
-		<div class="col-md-4">
-			<img id="trafficlight3" class="container-fluid" align="center" height="60">
-			<img id="trafficimage3" class="container-fluid"
-				src="<c:url value="/resources/images/loading.gif" />"
-				style="float: right;">
-			<p id=timeLabel3>NORTH</p>
-			<p id=dirLabel3></p>
-		</div>
-
-		<div class="col-md-4">
-		</div>
-<!-- ----------------------------------east,west------------------------------------- -->
-		<div class="col-md-4">
-			<img id="trafficlight1" class="container-fluid" align="center" height="60">
+<!-- ---------------------------------------west------------------------------------- -->
+		<div class="col-md-4" style="padding: 100px 0;">
+			<img id="trafficlight1" align="center" height="60">
 			<img id="trafficimage1" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
@@ -99,33 +83,34 @@
 			<p id=dirLabel1></p>
 		</div>
 
-		<div class="col-md-4" vertical-align="middle">
-				<br><br><br><br><br>
-				<p id="trafficremaintime" class="container-fluid" vertical-align="middle">traffic remain time</p>
-		</div>
-
-		<div class="col-md-4">
-			<img id="trafficlight0" class="container-fluid" align="center" height="60">
-			<img id="trafficimage0" class="container-fluid"
+<!-- ----------------------------------------north------------------------------------ -->		
+		<div class="col-md-4" backgroundColor="blue">
+			<img id="trafficlight3" align="center" height="60" src="/STLC/resources/images/light-green.png">
+			<img id="trafficimage3" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
-			<p id=timeLabel0>EAST</p>
-			<p id=dirLabel0></p>
-		</div>
-<!-- ---------------------------------------south------------------------------------ -->
-		<div class="col-md-4">
-		</div>
+			<p id=timeLabel3>NORTH</p>
+			<p id=dirLabel3></p>
 
-		<div class="col-md-4">
-			<img id="trafficlight2" class="container-fluid" align="center" height="60">
+<!-- ---------------------------------------center------------------------------------ -->
+			<p id="remainTime" class="container-fluid" vertical-align="middle">다음 신호까지 남은 시간 15/20 초</p>
+
+<!-- ----------------------------------------south------------------------------------ -->
+			<img id="trafficlight2" align="center" height="60">
 			<img id="trafficimage2" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
 			<p id=timeLabel2>SOUTH</p>
 			<p id=dirLabel2></p>
 		</div>
-
-		<div class="col-md-4">
+<!-- ---------------------------------------east-------------------------------------- -->
+		<div class="col-md-4" style="padding: 100px 0;">
+			<img id="trafficlight0" align="center" height="60">
+			<img id="trafficimage0" class="container-fluid"
+				src="<c:url value="/resources/images/loading.gif" />"
+				style="float: right;">
+			<p id=timeLabel0>EAST</p>
+			<p id=dirLabel0></p>
 		</div>
 <!-- -------------------------------------------------------------------------------- -->
 	</div>

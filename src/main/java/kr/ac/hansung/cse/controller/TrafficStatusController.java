@@ -32,6 +32,7 @@ public class TrafficStatusController {
 	private static final String[] EWSN = { "/east", "/west", "/south", "/north" }; 
 	private static final String IMAGE_DIR = "/STLC/resources/images";
 	private static final String[] LIGHT = { "/light-green", "/light-left", "/light-yellow", "/light-red" };
+	private static final String[] SECTION_NAME = { "한성대 사거리", "미아 삼거리" };
 
 	private final String serverKey = "AAAAc4cstQs:APA91bHmizdDtgS46SfpWAU34kXYHE0DdfzpA33TzgGq162DzTZFPJsAvQvQqncrxHrOCYj89aZbMMls4b-d-mbgjSVZfil28t6UIi6DQwy6eWps7pP03FAHexfJ2vKH7_WigFYlgol7";
 
@@ -51,7 +52,7 @@ public class TrafficStatusController {
 
 	@RequestMapping(value = "/ajaxtrafficstatus.do/{id}")
 	public @ResponseBody Map<String, List<Map<String, String>>> getBoardList(
-			Locale locale, Model model, HttpServletRequest request, @PathVariable("id") int id) throws IOException {
+			Locale locale, Model model, HttpServletRequest request, @PathVariable("id") int id) {
 		Map<String, List<Map<String, String>>> result = new HashMap<>();
 		List<Map<String, String>> list = new ArrayList<>(4);
 		
@@ -60,8 +61,8 @@ public class TrafficStatusController {
 		if (stream != null) {
 			String[] textDatas = new String(stream).split(" ");
 			if (textDatas[0].equals("1"))
-				sendMessage("한성대 사거리 접촉 사고 발생");
-			
+				sendMessage(new String(SECTION_NAME[id] + " 사고 발생"));
+
 			/* map에 저장 */
 			Map<String, String> map = new HashMap<>();
 			map.put("remaintime", textDatas[1]);
@@ -129,7 +130,7 @@ public class TrafficStatusController {
 	}
 
 	@RequestMapping("/sendMessage")
-	public String sendMessage(@RequestParam("msg") String msg) throws IOException {
+	public String sendMessage(@RequestParam("msg") String msg) {
 		List<String> token = userService.getUsers();
 		String MESSAGE_ID = String.valueOf(Math.random() % 100 + 1); // 메시지 고유 ID
 		boolean SHOW_ON_IDLE = true; // 앱 활성화 상태일때 보여줄것인지
@@ -139,7 +140,12 @@ public class TrafficStatusController {
 		Sender sender = new Sender(serverKey);
 		Message message = new Message.Builder().collapseKey(MESSAGE_ID).delayWhileIdle(SHOW_ON_IDLE)
 				.timeToLive(LIVE_TIME).addData("message", msg).build();
-		MulticastResult multicastResult = sender.send(message, token, RETRY);
+		MulticastResult multicastResult = null;
+		try {
+			multicastResult = sender.send(message, token, RETRY);
+		} catch (IOException e) {
+			//e.printStackTrace();
+		}
 
 		if (multicastResult != null) {
 			List<Result> resultList = multicastResult.getResults();

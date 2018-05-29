@@ -2,34 +2,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<h2 style="text-align: center; margin: 20px;">
-	<a href="<c:url value="/" />" style="text-decoration: none; color: black;">
-		<img id="logo" src="<c:url value="/resources/images/logo.jpg" />" style="float:right;width:100px;height:100px">
-		<br>Situation-cognitive Traffic Light Controller<!-- 이미지 로고 -->
-	</a>
-</h2>
+<header>
+	<c:if test="${pageContext.request.userPrincipal.name != null }">
+		<div class="float-right" style="margin: 0 0 0 0; width: 80px">
+			<a class="logout" href="javascript:document.getElementById('logout').submit()"
+				style="text-decoration: none;"><b>로그아웃</b></a>
+		</div>
+	</c:if>
 
-<!-- 로그아웃 -->
-<c:if test="${pageContext.request.userPrincipal.name != null }">
-	<div style="margin: 0 0 0 auto; width: 80px">
-		<a href="javascript:document.getElementById('logout').submit()"
-			style="text-decoration: none; color: black;">로그아웃</a>
+	<h2 style="text-align: center">
+		<a href="<c:url value="/" />" style="text-decoration: none">
+			<b style="color: #fdd835">Situation-cognitive Traffic Light Controller</b>
+			<br>
+			<b style="color: white">상황인지 신호 제어기</b>
+		</a>
+	</h2>
+
+	<hr>
+
+	<div class="row" align="right">
+		<div class="col-md-2"><b>팀명</b> KKCC</div>
+		<div class="col-md-5"><b>팀원</b> 조성윤 김민우 김수완 채준범</div>
+		<div class="col-md-4"><b>지도교수</b> 김성동 교수님</div>
 	</div>
-</c:if>
-<form id="logout" action="<c:url value="/logout" />" method="post">
-	<input type="hidden" name="${_csrf.parameterName }"
-		value="${_csrf.token }" />
-</form>
+</header>
 
 <div class="dropdown">
-	<button type="button" class="btn btn-dark dropdown-toggle"
-		data-toggle="dropdown" style="display: block; width: 100%; padding: 20px;">메뉴
-	</button>
-	<div class="dropdown-menu" style="width: 100%; margin: 0 auto;">
-		<div style="width: 100px; margin: 0 auto;">
+	<div class="btn dropdown-toggle" data-toggle="dropdown"
+	 style="display: block; width: 100%; padding: 10px;
+	 		 background-color: #fdd835; font-size: 25px"><b>교차로 선택</b>
+	</div>
+	<div class="dropdown-menu" style="width: 100%; margin: auto;">
+		<div style="width: 145px; margin: 0 auto;">
 			<a class="dropdown-item" href="<c:url value="/trafficstatus/0" />">한성대 사거리</a>
 			<a class="dropdown-item" href="<c:url value="/trafficstatus/1" />">미아 삼거리</a>
+		</div>
+		<hr style="width: 95%; align: center">
+		<div style="width: 150px; margin: 0 auto;">
 			<a class="dropdown-item" href="<c:url value="/messageTest" />">메세지 테스트</a>
 		</div>
 	</div>
 </div>
+
+<form id="logout" action="<c:url value="/logout" />" method="post">
+	<input type="hidden" name="${_csrf.parameterName }"
+		value="${_csrf.token }" />
+</form>

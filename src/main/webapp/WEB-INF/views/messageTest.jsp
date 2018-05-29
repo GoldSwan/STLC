@@ -8,7 +8,7 @@
 		<input type="hidden" name="${_csrf.parameterName }"
 			value="${_csrf.token }" />
 
-		<table border="0" bgcolor=#ffffff style="margin: auto">
+		<table border="0" bgcolor=#ffffff style="margin: auto; border-radius: 25px">
 			<tr>
 				<td align=center>
 					<table border="0" cellpadding="0" cellspacing="0" width=90%>

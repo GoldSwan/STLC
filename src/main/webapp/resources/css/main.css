@@ -1,5 +1,56 @@
 @charset "UTF-8";
 
-.container-wrapper {
-	margin-top: 80px;
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+body {
+	font-family: Nanum Gothic;
+}
+
+header {
+	background-image: url('/STLC/resources/images/blue-circuit.jpg');
+	color: white;
+	padding: 18px 10px 18px 10px;
+	margin-bottom: 15px;
+	border-radius: 0px 0px 25px 25px;
+}
+
+div a.logout {
+	padding: 10px;
+	color: #fdd835;
+	font-size: 15px;
+	border-radius: 25px;
+}
+
+div a.logout:hover {
+	color: white;
+	background-color: #fdd835
+}
+
+.dropdown div.dropdown-toggle:hover {
+	color: white;
+}
+
+.dropdown-item {
+	border-radius: 25px;
+}
+
+.dropdown-item:hover {
+	background-color: #fdd835;
+	color: white;
+}
+
+.jumbotron {
+	border-radius: 0px 0px 25px 25px;
+}
+
+footer {
+	background-image: url('/STLC/resources/images/blue-circuit.jpg');
+	color: white;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	padding: 10px 50px 10px 50px;
+	border-radius: 25px 25px 0px 0px;
+}
+
+footer p a {
+	color: #fdd835;
 }
