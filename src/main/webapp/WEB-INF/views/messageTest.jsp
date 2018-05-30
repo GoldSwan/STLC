@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="jumbotron">
+<div class="bg">
 	<form action="<c:url value="/sendMessage" />" method="post"
 		name="message">
 		<input type="hidden" name="${_csrf.parameterName }"

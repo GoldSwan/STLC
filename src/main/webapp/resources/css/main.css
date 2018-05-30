@@ -5,6 +5,13 @@ body {
 	font-family: Nanum Gothic;
 }
 
+.bg {
+	padding: 60px;
+	border-radius: 0px 0px 25px 25px;
+	background-image: url('/STLC/resources/images/machine.png');
+	background-size: cover;
+}
+
 header {
 	background-image: url('/STLC/resources/images/blue-circuit.jpg');
 	color: white;

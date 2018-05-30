@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="jumbotron" style="text-align: center; font-size: 18px;">
+<div class="bg" style="text-align: center; font-size: 18px;">
 	<form action="<c:url value="/upload/1"/>" method="post" enctype="multipart/form-data">
 		업로드 사진 선택 :
 		<input type="file" name="file">

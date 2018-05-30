@@ -69,29 +69,33 @@
 		$trafficimage3.attr('src', trafficData4.imgPath);
 	}
 </script>
-<div id="t" class="jumbotron"
+<div id="t" class="bg"
 	style="text-align: center; font-size: 18px;">
 
-	<div class="row" style="align: center">
-<!-- ---------------------------------------north------------------------------------ -->		
-		<div class="col-md-2">
-		</div>
+	<div class="row">
+		<!-- Empty -->
+		<div class="col-md-3"></div>
+		<!-- ---------------------------------------north------------------------------------ -->
+		<div class="col-md-2"></div>
 
 		<div class="col-md-2">
-			<img id="trafficlight3" class="container-fluid" align="center" height="60">
-			<img id="trafficimage3" class="container-fluid"
+			<img id="trafficlight3" class="container-fluid" align="center"
+				height="60"> <img id="trafficimage3" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
 			<p id=timeLabel3>NORTH</p>
 			<p id=dirLabel3></p>
 		</div>
 
+		<div class="col-md-2"></div>
+		<!-- Empty -->
+		<div class="col-md-3"></div>
+		<!-- ----------------------------------east,west------------------------------------- -->
+		<!-- Empty -->
+		<div class="col-md-3"></div>
 		<div class="col-md-2">
-		</div>
-<!-- ----------------------------------east,west------------------------------------- -->
-		<div class="col-md-2">
-			<img id="trafficlight1" class="container-fluid" align="center" height="60">
-			<img id="trafficimage1" class="container-fluid"
+			<img id="trafficlight1" class="container-fluid" align="center"
+				height="60"> <img id="trafficimage1" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
 			<p id=timeLabel1>WEST</p>
@@ -99,33 +103,41 @@
 		</div>
 
 		<div class="col-md-2" vertical-align="middle">
-				<br><br><br><br>
-				<p id="trafficremaintime" class="container-fluid" vertical-align="middle">traffic remain time</p>
+			<br>
+			<br>
+			<br>
+			<br>
+			<p id="trafficremaintime" class="container-fluid"
+				vertical-align="middle">traffic remain time</p>
 		</div>
 
 		<div class="col-md-2">
-			<img id="trafficlight0" class="container-fluid" align="center" height="60">
-			<img id="trafficimage0" class="container-fluid"
+			<img id="trafficlight0" class="container-fluid" align="center"
+				height="60"> <img id="trafficimage0" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
 			<p id=timeLabel0>EAST</p>
 			<p id=dirLabel0></p>
 		</div>
-<!-- ---------------------------------------south------------------------------------ -->
-		<div class="col-md-2">
-		</div>
+		<!-- Empty -->
+		<div class="col-md-3"></div>
+		<!-- ---------------------------------------south------------------------------------ -->
+		<!-- Empty -->
+		<div class="col-md-3"></div>
+		<div class="col-md-2"></div>
 
 		<div class="col-md-2">
-			<img id="trafficlight2" class="container-fluid" align="center" height="60">
-			<img id="trafficimage2" class="container-fluid"
+			<img id="trafficlight2" class="container-fluid" align="center"
+				height="60"> <img id="trafficimage2" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
 				style="float: right;">
 			<p id=timeLabel2>SOUTH</p>
 			<p id=dirLabel2></p>
 		</div>
 
-		<div class="col-md-2">
-		</div>
-<!-- -------------------------------------------------------------------------------- -->
+		<div class="col-md-2"></div>
+		<!-- Empty -->
+		<div class="col-md-3"></div>
+		<!-- -------------------------------------------------------------------------------- -->
 	</div>
 </div>
