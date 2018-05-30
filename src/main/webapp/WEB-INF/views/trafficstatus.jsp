@@ -48,22 +48,23 @@
 		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
 		$timeLabel3.text(trafficData1.timeLabel);
 		$dirLabel3.text(trafficData1.dirLabel);
-		$trafficlight3.attr('src', trafficData1.light);
-		$trafficimage3.attr('src', trafficData1.imgPath);
+		$trafficlight3.attr('src', trafficData4.light);
+		$trafficimage3.attr('src', trafficData4.imgPath);
 
 		$timeLabel0.text(trafficData2.timeLabel);
 		$dirLabel0.text(trafficData2.dirLabel);
-		$trafficlight0.attr('src', trafficData2.light);
-		$trafficimage0.attr('src', trafficData2.imgPath);
+		$trafficlight0.attr('src', trafficData1.light);
+		$trafficimage0.attr('src', trafficData1.imgPath);
 		
 		$timeLabel1.text(trafficData3.timeLabel);
 		$dirLabel1.text(trafficData3.dirLabel);
-		$trafficlight1.attr('src', trafficData3.light);
-		$trafficimage1.attr('src', trafficData3.imgPath);
+		$trafficlight1.attr('src', trafficData2.light);
+		$trafficimage1.attr('src', trafficData2.imgPath);
+		
 		$timeLabel2.text(trafficData4.timeLabel);
 		$dirLabel2.text(trafficData4.dirLabel);
-		$trafficlight2.attr('src', trafficData4.light);
-		$trafficimage2.attr('src', trafficData4.imgPath);
+		$trafficlight2.attr('src', trafficData3.light);
+		$trafficimage2.attr('src', trafficData3.imgPath);
 	}
 </script>
 <div id="t" class="jumbotron"
