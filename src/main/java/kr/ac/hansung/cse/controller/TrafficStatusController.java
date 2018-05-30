@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.hansung.cse.service.FileService;
+import kr.ac.hansung.cse.service.SectionService;
 
 @Controller
 public class TrafficStatusController {
@@ -24,13 +25,15 @@ public class TrafficStatusController {
 	private static final String[] EWSN = { "/east", "/west", "/south", "/north" }; 
 	private static final String IMAGE_DIR = "/STLC/resources/images";
 	private static final String[] LIGHT = { "/light-green", "/light-left", "/light-yellow", "/light-red" };
-	private static final String[] SECTION_NAME = { "한성대 사거리", "미아 삼거리" };
 
 	@Autowired
 	private FileService fileService;
 	
 	@Autowired
 	private MessageController messageController;
+	
+	@Autowired
+	private SectionService sectionService;
 	
 	private Map<String, String> texttimes = new HashMap<>();
 	
@@ -51,7 +54,7 @@ public class TrafficStatusController {
 		if (stream != null) {
 			String[] textDatas = new String(stream).split(" ");
 			if (textDatas[0].equals("1"))
-				messageController.sendMessage(new String(SECTION_NAME[id] + " 사고 발생"));
+				messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
 
 			/* map에 저장 */
 			Map<String, String> map = new HashMap<>();
