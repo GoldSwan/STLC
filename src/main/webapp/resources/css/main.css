@@ -16,8 +16,8 @@ header {
 	background-image: url('/STLC/resources/images/blue-circuit.jpg');
 	color: white;
 	padding: 18px 10px 18px 10px;
-	margin-bottom: 15px;
 	border-radius: 0px 0px 25px 25px;
+	margin-bottom: 15px;
 }
 
 div a.logout {
