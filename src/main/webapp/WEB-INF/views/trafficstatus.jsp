@@ -72,12 +72,12 @@
 <div id="t" class="jumbotron"
 	style="text-align: center; font-size: 18px;">
 
-	<div class="row">
+	<div class="row" style="align: center">
 <!-- ---------------------------------------north------------------------------------ -->		
-		<div class="col-md-4">
+		<div class="col-md-2">
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-2">
 			<img id="trafficlight3" class="container-fluid" align="center" height="60">
 			<img id="trafficimage3" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
@@ -86,10 +86,10 @@
 			<p id=dirLabel3></p>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-2">
 		</div>
 <!-- ----------------------------------east,west------------------------------------- -->
-		<div class="col-md-4">
+		<div class="col-md-2">
 			<img id="trafficlight1" class="container-fluid" align="center" height="60">
 			<img id="trafficimage1" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
@@ -98,12 +98,12 @@
 			<p id=dirLabel1></p>
 		</div>
 
-		<div class="col-md-4" vertical-align="middle">
+		<div class="col-md-2" vertical-align="middle">
 				<br><br><br><br>
 				<p id="trafficremaintime" class="container-fluid" vertical-align="middle">traffic remain time</p>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-2">
 			<img id="trafficlight0" class="container-fluid" align="center" height="60">
 			<img id="trafficimage0" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
@@ -112,10 +112,10 @@
 			<p id=dirLabel0></p>
 		</div>
 <!-- ---------------------------------------south------------------------------------ -->
-		<div class="col-md-4">
+		<div class="col-md-2">
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-2">
 			<img id="trafficlight2" class="container-fluid" align="center" height="60">
 			<img id="trafficimage2" class="container-fluid"
 				src="<c:url value="/resources/images/loading.gif" />"
@@ -124,7 +124,7 @@
 			<p id=dirLabel2></p>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-2">
 		</div>
 <!-- -------------------------------------------------------------------------------- -->
 	</div>
