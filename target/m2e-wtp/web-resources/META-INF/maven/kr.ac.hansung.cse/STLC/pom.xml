@@ -3,6 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.ac.hansung.cse</groupId>
+	<artifactId>STLC</artifactId>
 	<name>STLC</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -10,7 +11,8 @@
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.12.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>		
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -47,9 +49,9 @@
 		
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.0.8.Final</version>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.0.8.Final</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
@@ -58,7 +60,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.12.Final</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -100,11 +102,11 @@
 			<version>1.9.3</version>
 		</dependency>
 
-		<!-- MultipartHttpServletRequset fileupload -->
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.0.1</version>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.4</version>
 		</dependency>
 
 		<dependency>
@@ -219,5 +221,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<artifactId>STLC</artifactId>
 </project>

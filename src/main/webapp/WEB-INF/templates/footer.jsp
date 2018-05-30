@@ -29,8 +29,10 @@
 		<a href="#" style="text-decoration: none;">Back to top</a>
 	</p>
 	<p>
-		&copy; 2018-2019 KKCC, Inc. &middot;
-		<a href="<c:url value="/home" />" style="text-decoration: none;">Privacy</a> &middot;
-			<a href="<c:url value="/home" />" style="text-decoration: none;">Terms</a>
+		&copy; Hansung University 2018 Capstone STLC Project by Team KKCC
+		&middot; 
+		<a href="https://github.com/GoldSwan/STLC" style="text-decoration: none">Git</a>
+		&middot;
+		<a href="https://www.youtube.com/watch?v=lfkUsUylsjE&feature=youtu.be" style="text-decoration: none">Demo Video</a>
 	</p>
 </footer>

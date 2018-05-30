@@ -88,10 +88,8 @@ public class TrafficStatusController {
 			int hour = time / 3600 % 24 + 9;
 			int min = (time % 3600) / 60;
 			int sec = time % 60;
-			String timeLabel = "" + hour + "시 " + min + "분 " + sec + "초"; 
-			String dirLabel = "정면 : " + textDatas[1]
-							+ "대 후면 : " + textDatas[2]
-							+ "대 측면 : " + textDatas[3] + "대";
+			String timeLabel = String.format("%d시 %d분 %d초", hour, min, sec); 
+			String dirLabel = String.format("정면: %s대 후면: %s대 측면: %s대", textDatas[1], textDatas[2], textDatas[3]);
 
 			// 신호등 상태
 			String light = "";
@@ -108,7 +106,7 @@ public class TrafficStatusController {
 			map.put("timeLabel", timeLabel);
 			map.put("dirLabel", dirLabel);
 			map.put("light", light);
-			list.add(map);
+			list.add(i, map);
 		}
 
 		result.put("items", list);

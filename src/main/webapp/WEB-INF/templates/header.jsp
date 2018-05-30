@@ -48,8 +48,12 @@
 	<!-- 교차로 목록 -->
 	<c:if test="${pageContext.request.userPrincipal.name != null }">
 		<div class="dropdown-menu" style="width: 100%; margin: auto;" ng-init="initSections()">
+			<!-- default item0 -->
+			<div class="dropdown-item">
+				<a style="text-decoration: none; color: black" href="<c:url value="/trafficstatus/0" />">한성대 사거리&#35;0</a>
+			</div>
 			<div class="dropdown-item" ng-repeat="section in sections">
-				<a style="text-decoration: none; color: black" href="<c:url value="/trafficstatus/{{section.id}}" />">{{section.id}} {{section.name}}</a>
+				<a style="text-decoration: none; color: black" href="<c:url value="/trafficstatus/{{section.id}}" />">{{section.name}}&#35;{{section.id}}</a>
 				<a style="color: #DC143C; font-size: 16px; margin-left: 10px" href="">
 					<i ng-click="removeSection(section.id)" class="fa fa-remove"></i>
 				</a>

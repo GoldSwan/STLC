@@ -5,11 +5,12 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var jqueryObj = $;
+	var sectionId = ${id}
 	
 	var auto_refresh = setInterval(function testajax() {
 		jqueryObj.ajax({
 			type : 'GET',
-			url : '/STLC/ajaxtrafficstatus.do/' + ${id},
+			url : '/STLC/ajaxtrafficstatus.do/' + sectionId,
 			dataType : "json",
 			success : function(resData) {
 				createImages(resData);
@@ -20,6 +21,7 @@
 			}
 		});
 	}, 1000); // 새로고침 시간 1000ms
+	
 	function createImages(resData) {
 		var $trafficremaintime = $("#trafficremaintime");
 		var $traffictotaltime = $("#traffictotaltime");
@@ -40,84 +42,144 @@
 		var $trafficlight2 = $("#trafficlight2");
 		var $trafficlight3 = $("#trafficlight3");
 		var trafficDatas = resData.items;
-		var trafficData0 = trafficDatas[0];
-		var trafficData1 = trafficDatas[1];
-		var trafficData2 = trafficDatas[2];
-		var trafficData3 = trafficDatas[3];
-		var trafficData4 = trafficDatas[4];
 		
-		$trafficremaintime.text(trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
+		if (trafficDatas[0] != undefined) {
+			$trafficremaintime.text(trafficDatas[0].remaintime +" / "+ trafficDatas[0].totaltime + "초");
+		}
+			
+		if (trafficDatas[1] != undefined) {
+			$timeLabel0.text(trafficDatas[1].timeLabel);
+			$dirLabel0.text(trafficDatas[1].dirLabel);
+			$trafficlight0.attr('src', trafficDatas[1].light);
+			$trafficimage0.attr('src', trafficDatas[1].imgPath);
+		}
+		
+		if (trafficDatas[2] != undefined) {
+			$timeLabel1.text(trafficDatas[2].timeLabel);
+			$dirLabel1.text(trafficDatas[2].dirLabel);
+			$trafficlight1.attr('src', trafficDatas[2].light);
+			$trafficimage1.attr('src', trafficDatas[2].imgPath);
+		}
+		
+		if (trafficDatas[3] != undefined) {
+			$timeLabel2.text(trafficDatas[3].timeLabel);
+			$dirLabel2.text(trafficDatas[3].dirLabel);
+			$trafficlight2.attr('src', trafficDatas[3].light);
+			$trafficimage2.attr('src', trafficDatas[3].imgPath);
+		}
+		
+		if (trafficDatas[4] != undefined) {
+			$timeLabel3.text(trafficDatas[4].timeLabel);
+			$dirLabel3.text(trafficDatas[4].dirLabel);
+			$trafficlight3.attr('src', trafficDatas[4].light);
+			$trafficimage3.attr('src', trafficDatas[4].imgPath);
+		}
+	}
 
-		$timeLabel0.text(trafficData1.timeLabel);
-		$dirLabel0.text(trafficData1.dirLabel);
-		$trafficlight0.attr('src', trafficData1.light);
-		$trafficimage0.attr('src', trafficData1.imgPath);
-		
-		$timeLabel1.text(trafficData3.timeLabel);
-		$dirLabel1.text(trafficData3.dirLabel);
-		$trafficlight1.attr('src', trafficData2.light);
-		$trafficimage1.attr('src', trafficData2.imgPath);
-		
-		$timeLabel2.text(trafficData4.timeLabel);
-		$dirLabel2.text(trafficData4.dirLabel);
-		$trafficlight2.attr('src', trafficData3.light);
-		$trafficimage2.attr('src', trafficData3.imgPath);
-		
-		$timeLabel3.text(trafficData4.timeLabel);
-		$dirLabel3.text(trafficData4.dirLabel);
-		$trafficlight3.attr('src', trafficData4.light);
-		$trafficimage3.attr('src', trafficData4.imgPath);
+	var followCursor = (function() {
+		var trafficimg = document.createElement('img');
+		trafficimg.style.position = 'absolute';
+		trafficimg.style.zIndex = '10';
+
+		return {
+			init : function(img) {
+				trafficimg.src = img.src;
+				img.parentElement.appendChild(trafficimg);
+			},
+
+			run : function(e) {
+				var e = e || window.event;
+				trafficimg.style.left = e.x + 'px';
+				trafficimg.style.top = e.y + 'px';
+			},
+
+			stop : function(img) {
+				img.parentElement.removeChild(trafficimg);
+			}
+		};
+	}());
+
+	function showBigImage(img) {
+		followCursor.init(img);
+	}
+
+	function moveBigImage(event) {
+		followCursor.run(event);
+	}
+
+	function hideBigImage(img) {
+		followCursor.stop(img);
 	}
 </script>
 <div id="t" class="bg"
 	style="text-align: center; font-size: 18px;">
 
 	<div class="row">
-		<!-- Empty -->
-		<div class="col-md-3"></div>
-
-		<!-- west -->
-		<div class="col-md-2" style="height: 100%; margin: auto">
-			<img id="trafficlight1" class="container-fluid" align="center"
-				height="60">
-			<img id="trafficimage1" class="container-fluid"
-				src="<c:url value="/resources/images/loading.gif" />">
-			<p id=timeLabel1>WEST</p>
-			<p id=dirLabel1></p>
+		<!-- ---------------------------------------west------------------------------------ -->
+		<div class="col-md-3" style="height: 100%; margin: auto">
+			<div class="traffic">
+				<img id="trafficlight1" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficimage1" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
+					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
+				<div class="traffic-label">
+					<div style="border: 1px solid red; border-radius: 5px">
+						<div id=timeLabel1>WEST</div>
+						<div id=dirLabel1>info</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<!-- ---------------------------------------north------------------------------------ -->
-			<img id="trafficlight3" class="container-fluid" align="center"
-				height="60"> <img id="trafficimage3" class="container-fluid"
-				src="<c:url value="/resources/images/loading.gif" />"
-				style="float: right;">
-			<p id=timeLabel3>NORTH</p>
-			<p id=dirLabel3></p>
+			<div class="traffic">
+				<img id="trafficlight3" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficimage3" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
+					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
+				<div class="traffic-label">
+					<div style="border: 1px solid red; border-radius: 5px">
+						<div id=timeLabel3>NORTH</div>
+						<div id=dirLabel3>info</div>
+					</div>
+				</div>
+			</div>
 
 			<!-- ---------------------------------------remain time------------------------------------ -->
-			<div class="container-fluid" style="font-size: 22px">다음 신호까지 남은 시간</div>
-			<div id="trafficremaintime" class="container-fluid" style="font-size: 22px"></div>
+			
+			<div class="container-fluid" style="font-family: 'Malgun Gothic'; font-size: 18px; text-align: center; border-radius: 25px; background-color: black; color: white; padding: 5px">
+				<div><b>남은 시간</b></div>
+				<div id="trafficremaintime">0 / 20 <b>초</b></div>
+			</div>
 
-			<!-- ---------------------------------------south------------------------------------ -->				
-			<img id="trafficlight2" align="center" 	height="60">
-			<img id="trafficimage2" class="container-fluid"
-				src="<c:url value="/resources/images/loading.gif" />">
-			<p id=timeLabel2>SOUTH</p>
-			<p id=dirLabel2></p>
+			<!-- ---------------------------------------south------------------------------------ -->
+			<div class="traffic">
+				<img id="trafficlight2" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficimage2" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
+					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
+				<div class="traffic-label">
+					<div style="border: 1px solid red; border-radius: 5px">
+						<div id=timeLabel2>SOUTH</div>
+						<div id=dirLabel2>info</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		
+
 		<!-- ----------------------------------east------------------------------------- -->
-		<div class="col-md-2" style="height: 100%; margin: auto">
-			<img id="trafficlight0" class="container-fluid" align="center"
-				height="60"> <img id="trafficimage0" class="container-fluid"
-				src="<c:url value="/resources/images/loading.gif" />">
-			<p id=timeLabel0>EAST</p>
-			<p id=dirLabel0></p>
+		<div class="col-md-3" style="height: 100%; margin: auto">
+			<div class="traffic">
+				<img id="trafficlight0" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficimage0" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
+					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
+				<div class="traffic-label">
+					<div style="border: 1px solid red; border-radius: 5px">
+						<div id=timeLabel0>EAST</div>
+						<div id=dirLabel0>info</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
-		<!-- Empty -->
-		<div class="col-md-3"></div>
 		<!-- -------------------------------------------------------------------------------- -->
 	</div>
 </div>
