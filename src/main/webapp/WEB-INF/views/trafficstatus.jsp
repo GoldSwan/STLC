@@ -46,7 +46,7 @@
 		var trafficData3 = trafficDatas[3];
 		var trafficData4 = trafficDatas[4];
 		
-		$trafficremaintime.text("다음 신호까지 남은 시간 " + trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
+		$trafficremaintime.text(trafficData0.remaintime +" / "+ trafficData0.totaltime + "초");
 
 		$timeLabel0.text(trafficData1.timeLabel);
 		$dirLabel0.text(trafficData1.dirLabel);
@@ -96,8 +96,8 @@
 			<p id=dirLabel3></p>
 
 			<!-- ---------------------------------------remain time------------------------------------ -->
-			<p id="trafficremaintime" class="container-fluid"
-				vertical-align="middle">traffic remain time</p>
+			<div class="container-fluid" style="font-size: 22px">다음 신호까지 남은 시간</div>
+			<div id="trafficremaintime" class="container-fluid" style="font-size: 22px"></div>
 
 			<!-- ---------------------------------------south------------------------------------ -->				
 			<img id="trafficlight2" align="center" 	height="60">
