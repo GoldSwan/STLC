@@ -139,6 +139,8 @@
 	style="text-align: center; font-size: 18px;">
 
 	<div class="row">
+		<div class="col-md-1"></div>
+	
 		<!-- ---------------------------------------west------------------------------------ -->
 		<div class="col-md-3" style="height: 100%; margin: auto">
 			<div class="traffic">
@@ -204,6 +206,7 @@
 			</div>
 		</div>
 
+		<div class="col-md-1"></div>
 		<!-- -------------------------------------------------------------------------------- -->
 	</div>
 </div>
