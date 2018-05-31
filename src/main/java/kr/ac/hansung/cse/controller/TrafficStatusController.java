@@ -64,6 +64,9 @@ public class TrafficStatusController {
 		}
 		
 		for (int i = 0; i < 4; i++) {
+			Map<String, String> map = new HashMap<>();
+			list.add(map);
+
 			/* text 파일 */
 			byte[] baRequesterCert = fileService.getCertKey(TEXT_DIR + "/" + id + EWSN[i] + ".txt");
 			if (baRequesterCert == null)
@@ -101,12 +104,10 @@ public class TrafficStatusController {
 			}
 			
 			/* map에 저장 */
-			Map<String, String> map = new HashMap<>();
 			map.put("imgPath", imgPath);
 			map.put("timeLabel", timeLabel);
 			map.put("dirLabel", dirLabel);
 			map.put("light", light);
-			list.add(i, map);
 		}
 
 		result.put("items", list);
