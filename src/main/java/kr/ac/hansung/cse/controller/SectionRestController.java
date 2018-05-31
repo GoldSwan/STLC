@@ -31,6 +31,7 @@ public class SectionRestController {
 		section.setName(sectionName);
 		sectionService.saveOrUpdateSection(section);
 
+		@SuppressWarnings("deprecation")
 		File file = new File(request.getRealPath("/resources/files") + "/" + section.getId());
 		file.mkdir();
 
@@ -65,6 +66,7 @@ public class SectionRestController {
 		Section section = sectionService.getSectionById(sectionId);
 		sectionService.deleteSection(section);
 		
+		@SuppressWarnings("deprecation")
 		File file = new File(request.getRealPath("/resources/files") + "/" + sectionId);
 		for (File f : file.listFiles())
 			f.delete();

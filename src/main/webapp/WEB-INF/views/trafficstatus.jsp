@@ -78,7 +78,7 @@
 
 	var followCursor = (function() {
 		var trafficimg = document.createElement('img');
-		trafficimg.style.position = 'absolute';
+		trafficimg.style.position = 'fixed';
 		trafficimg.style.zIndex = '10';
 
 		return {
@@ -87,10 +87,26 @@
 				img.parentElement.appendChild(trafficimg);
 			},
 
-			run : function(e) {
-				var e = e || window.event;
-				trafficimg.style.left = e.x + 'px';
-				trafficimg.style.top = e.y + 'px';
+			run : function(event) {
+				var left = event.x - trafficimg.clientWidth / 2;
+				var rDiff = event.x + trafficimg.clientWidth / 2 - window.innerWidth;
+				if (left < 0)
+					left = 0;
+				else if (rDiff > 0)
+					left -= rDiff;
+
+				console.log('event.x', event.x);
+				console.log('innerWidth', window.innerWidth);
+				console.log('clientWidth', trafficimg.clientWidth);
+				
+				var top;
+				if (window.innerHeight < event.y + trafficimg.clientHeight)
+					top = event.y - 20 - trafficimg.clientHeight;
+				else
+					top = event.y + 20;
+
+				trafficimg.style.left = left + 'px';
+				trafficimg.style.top = top + 'px';
 			},
 
 			stop : function(img) {
@@ -118,7 +134,7 @@
 		<!-- ---------------------------------------west------------------------------------ -->
 		<div class="col-md-3" style="height: 100%; margin: auto">
 			<div class="traffic">
-				<img id="trafficlight1" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficlight1" class="container-fluid" src="<c:url value="/resources/images/light-default.png" />">
 				<img id="trafficimage1" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
 					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
 				<div class="traffic-label">
@@ -133,7 +149,7 @@
 		<div class="col-md-3">
 			<!-- ---------------------------------------north------------------------------------ -->
 			<div class="traffic">
-				<img id="trafficlight3" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficlight3" class="container-fluid" src="<c:url value="/resources/images/light-default.png" />">
 				<img id="trafficimage3" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
 					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
 				<div class="traffic-label">
@@ -153,7 +169,7 @@
 
 			<!-- ---------------------------------------south------------------------------------ -->
 			<div class="traffic">
-				<img id="trafficlight2" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficlight2" class="container-fluid" src="<c:url value="/resources/images/light-default.png" />">
 				<img id="trafficimage2" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
 					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
 				<div class="traffic-label">
@@ -168,7 +184,7 @@
 		<!-- ----------------------------------east------------------------------------- -->
 		<div class="col-md-3" style="height: 100%; margin: auto">
 			<div class="traffic">
-				<img id="trafficlight0" class="container-fluid" src="<c:url value="/resources/images/light-green.png" />">
+				<img id="trafficlight0" class="container-fluid" src="<c:url value="/resources/images/light-default.png" />">
 				<img id="trafficimage0" class="container-fluid traffic-image" src="<c:url value="/resources/images/loading.gif" />"
 					 onmouseover="showBigImage(this)" onmousemove="moveBigImage(event)" onmouseout="hideBigImage(this)">
 				<div class="traffic-label">
