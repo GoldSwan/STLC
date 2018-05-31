@@ -46,7 +46,7 @@
 		if (trafficDatas[0] != undefined) {
 			$trafficremaintime.text(trafficDatas[0].remaintime +" / "+ trafficDatas[0].totaltime + "초");
 		}
-			
+
 		if (trafficDatas[1] != undefined) {
 			$timeLabel0.text(trafficDatas[1].timeLabel);
 			$dirLabel0.text(trafficDatas[1].dirLabel);
@@ -96,17 +96,27 @@
 		return {
 			init : function(img) {
 				trafficimg.src = img.src;
+
 				img.parentElement.appendChild(trafficimg);
+
+				if (trafficimg.clientWidth <= img.clientWidth)
+					img.parentElement.removeChild(trafficimg);
 			},
 
 			run : function(event) {
+				if (trafficimg.clientWidth > window.innerWidth) {
+					var mul = trafficimg.clientWidth / window.innerWidth;
+					trafficimg.clientWidth = window.innerWidth;
+					trafficimg.clientHeight = window.innerHeight * mul;
+				}
+
 				var left = event.x - trafficimg.clientWidth / 2;
 				var rDiff = event.x + trafficimg.clientWidth / 2 - window.innerWidth;
 				if (left < 0)
 					left = 0;
 				else if (rDiff > 0)
 					left -= rDiff;
-				
+
 				var top;
 				if (window.innerHeight < event.y + trafficimg.clientHeight)
 					top = event.y - 20 - trafficimg.clientHeight;
