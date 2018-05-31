@@ -49,7 +49,7 @@ public class TrafficStatusController {
 		
 		// 사고상황 인지
 		File file = new File(request.getRealPath("/resources/files") + "/" + id + "/global.txt");
-		if (!file.exists()) {
+		if (file.exists()) {
 			String text;
 			try {
 				FileReader in = new FileReader(file);
@@ -57,18 +57,17 @@ public class TrafficStatusController {
 				text = reader.readLine();
 				reader.close();
 				
-				Map<String, String> map = new HashMap<>();
-				list.add(map);
-				
 				String[] textDatas = text.split(" ");
 				if (textDatas[0].equals("1"))
 					messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
 				
 				/* map에 저장 */
+				Map<String, String> map = new HashMap<>();
+				list.add(map);
 				map.put("remaintime", textDatas[1]);
 				map.put("totaltime", textDatas[2]);
 			} catch (IOException e) {
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 		
@@ -122,6 +121,15 @@ public class TrafficStatusController {
 		}
 
 		result.put("items", list);
+		
+//		System.out.println(result.get("items").get(0).get("remaintime"));
+//		System.out.println(result.get("items").get(0).get("totaltime"));
+//		for (int i = 0; i < 4; i++) {
+//			System.out.println(result.get("items").get(i+1).get("imgPath"));
+//			System.out.println(result.get("items").get(i+1).get("timeLabel"));
+//			System.out.println(result.get("items").get(i+1).get("dirLabel"));
+//			System.out.println(result.get("items").get(i+1).get("light"));
+//		}
 
 		return result;
 	}
