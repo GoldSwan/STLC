@@ -52,17 +52,18 @@ public class TrafficStatusController {
 		// 사고상황 인지
 		byte[] stream = fileService.getCertKey(TEXT_DIR + "/" + id + "/global.txt");
 		if (stream != null) {
+			Map<String, String> map = new HashMap<>();
+			list.add(map);
+
 			String[] textDatas = new String(stream).split(" ");
 			if (textDatas[0].equals("1"))
 				messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
 
 			/* map에 저장 */
-			Map<String, String> map = new HashMap<>();
 			map.put("remaintime", textDatas[1]);
 			map.put("totaltime", textDatas[2]);
-			list.add(map);
 		}
-		
+
 		for (int i = 0; i < 4; i++) {
 			Map<String, String> map = new HashMap<>();
 			list.add(map);

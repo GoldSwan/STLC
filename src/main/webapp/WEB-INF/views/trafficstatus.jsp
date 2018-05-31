@@ -52,6 +52,9 @@
 			$dirLabel0.text(trafficDatas[1].dirLabel);
 			$trafficlight0.attr('src', trafficDatas[1].light);
 			$trafficimage0.attr('src', trafficDatas[1].imgPath);
+		} else {
+			$trafficlight0.attr('src', "<c:url value='/resources/images/light-default.png' />");
+			$trafficimage0.attr('src', "<c:url value='/resources/images/loading.gif' />");
 		}
 		
 		if (trafficDatas[2] != undefined) {
@@ -59,6 +62,9 @@
 			$dirLabel1.text(trafficDatas[2].dirLabel);
 			$trafficlight1.attr('src', trafficDatas[2].light);
 			$trafficimage1.attr('src', trafficDatas[2].imgPath);
+		} else {
+			$trafficlight1.attr('src', "<c:url value='/resources/images/light-default.png' />");
+			$trafficimage1.attr('src', "<c:url value='/resources/images/loading.gif' />");
 		}
 		
 		if (trafficDatas[3] != undefined) {
@@ -66,6 +72,9 @@
 			$dirLabel2.text(trafficDatas[3].dirLabel);
 			$trafficlight2.attr('src', trafficDatas[3].light);
 			$trafficimage2.attr('src', trafficDatas[3].imgPath);
+		} else {
+			$trafficlight2.attr('src', "<c:url value='/resources/images/light-default.png' />");
+			$trafficimage2.attr('src', "<c:url value='/resources/images/loading.gif' />");
 		}
 		
 		if (trafficDatas[4] != undefined) {
@@ -73,6 +82,9 @@
 			$dirLabel3.text(trafficDatas[4].dirLabel);
 			$trafficlight3.attr('src', trafficDatas[4].light);
 			$trafficimage3.attr('src', trafficDatas[4].imgPath);
+		} else {
+			$trafficlight3.attr('src', "<c:url value='/resources/images/light-default.png' />");
+			$trafficimage3.attr('src', "<c:url value='/resources/images/loading.gif' />");
 		}
 	}
 
@@ -94,10 +106,6 @@
 					left = 0;
 				else if (rDiff > 0)
 					left -= rDiff;
-
-				console.log('event.x', event.x);
-				console.log('innerWidth', window.innerWidth);
-				console.log('clientWidth', trafficimg.clientWidth);
 				
 				var top;
 				if (window.innerHeight < event.y + trafficimg.clientHeight)
