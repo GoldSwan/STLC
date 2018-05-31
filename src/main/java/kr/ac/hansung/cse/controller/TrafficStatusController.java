@@ -1,5 +1,9 @@
 package kr.ac.hansung.cse.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,27 +19,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.ac.hansung.cse.service.FileService;
 import kr.ac.hansung.cse.service.SectionService;
 
 @Controller
 public class TrafficStatusController {
-	private static final String TEXT_DIR = "/var/lib/tomcat8/webapps/STLC/resources/files";
 	private static final String FILE_DIR = "/STLC/resources/files";
 	private static final String[] EWSN = { "/east", "/west", "/south", "/north" }; 
 	private static final String IMAGE_DIR = "/STLC/resources/images";
 	private static final String[] LIGHT = { "/light-green", "/light-left", "/light-yellow", "/light-red" };
 
 	@Autowired
-	private FileService fileService;
-	
-	@Autowired
 	private MessageController messageController;
 	
 	@Autowired
 	private SectionService sectionService;
-	
-	private Map<String, String> texttimes = new HashMap<>();
 	
 	@RequestMapping(value = "/trafficstatus/{id}")
 	public String traffic(Model model, @PathVariable("id") int id) {
@@ -43,6 +40,7 @@ public class TrafficStatusController {
 		return "trafficstatus";
 	}
 
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/ajaxtrafficstatus.do/{id}")
 	public @ResponseBody Map<String, List<Map<String, String>>> getBoardList(
 			Locale locale, Model model, HttpServletRequest request, @PathVariable("id") int id) {
@@ -50,42 +48,54 @@ public class TrafficStatusController {
 		List<Map<String, String>> list = new ArrayList<>(4);
 		
 		// 사고상황 인지
-		byte[] stream = fileService.getCertKey(TEXT_DIR + "/" + id + "/global.txt");
-		if (stream != null) {
-			Map<String, String> map = new HashMap<>();
-			list.add(map);
-
-			String[] textDatas = new String(stream).split(" ");
-			if (textDatas[0].equals("1"))
-				messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
-
-			/* map에 저장 */
-			map.put("remaintime", textDatas[1]);
-			map.put("totaltime", textDatas[2]);
+		File file = new File(request.getRealPath("/resources/files") + "/" + id + "/global.txt");
+		if (!file.exists()) {
+			String text;
+			try {
+				FileReader in = new FileReader(file);
+				BufferedReader reader = new BufferedReader(in);
+				text = reader.readLine();
+				reader.close();
+				
+				Map<String, String> map = new HashMap<>();
+				list.add(map);
+				
+				String[] textDatas = text.split(" ");
+				if (textDatas[0].equals("1"))
+					messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
+				
+				/* map에 저장 */
+				map.put("remaintime", textDatas[1]);
+				map.put("totaltime", textDatas[2]);
+			} catch (IOException e) {
+				//e.printStackTrace();
+			}
 		}
-
+		
 		for (int i = 0; i < 4; i++) {
 			Map<String, String> map = new HashMap<>();
 			list.add(map);
 
 			/* text 파일 */
-			byte[] baRequesterCert = fileService.getCertKey(TEXT_DIR + "/" + id + EWSN[i] + ".txt");
-			if (baRequesterCert == null)
+			file = new File(request.getRealPath("/resources/files") + "/" + id + EWSN[i] + ".txt");
+			if (!file.exists())
 				continue;
-
+			
 			// 실시간 이미지
-			String text = new String(baRequesterCert); //byte->string 변환
-			String[] textDatas = text.split(" ");
-			String imgPath;
-			if (!texttimes.containsKey(Integer.toString(i))) {
-				imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
-				texttimes.put(Integer.toString(i), textDatas[0]);
-			} else {
-				if(!(texttimes.get(Integer.toString(i)).equals(textDatas[0])))
-					imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
-				else
-					continue;
+			String text;
+			try {
+				FileReader in = new FileReader(file);
+				BufferedReader reader = new BufferedReader(in);
+				text = reader.readLine();
+				reader.close();
+			} catch (IOException e) {
+				continue;
 			}
+			String[] textDatas = text.split(" ");
+			String imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
+			file = new File(request.getRealPath("/resources/files") + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg");
+			if (!file.exists())
+				continue;
 
 			// 분석 결과
 			int time = Integer.parseInt(textDatas[0]);
@@ -103,7 +113,7 @@ public class TrafficStatusController {
 					break;
 				}
 			}
-			
+
 			/* map에 저장 */
 			map.put("imgPath", imgPath);
 			map.put("timeLabel", timeLabel);
