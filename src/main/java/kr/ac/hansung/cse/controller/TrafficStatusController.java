@@ -58,8 +58,8 @@ public class TrafficStatusController {
 				reader.close();
 				
 				String[] textDatas = text.split(" ");
-				if (textDatas[0].equals("1"))
-					messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
+				//if (textDatas[0].equals("1"))
+				//	messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
 				
 				/* map에 저장 */
 				Map<String, String> map = new HashMap<>();
