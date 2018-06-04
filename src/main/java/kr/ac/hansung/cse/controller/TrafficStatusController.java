@@ -48,7 +48,7 @@ public class TrafficStatusController {
 		List<Map<String, String>> list = new ArrayList<>(4);
 		
 		// 사고상황 인지
-		File file = new File(request.getRealPath("/resources/files") + "/" + id + "/global.txt");
+		File file = new File(request.getServletContext().getRealPath("/resources/files") + "/" + id + "/global.txt");
 		if (file.exists()) {
 			String text;
 			try {
@@ -58,9 +58,11 @@ public class TrafficStatusController {
 				reader.close();
 				
 				String[] textDatas = text.split(" ");
-				//if (textDatas[0].equals("1"))
-				//	messageController.sendMessage(new String(sectionService.getSectionById(id).getName() + " 사고 발생"));
-				
+				if (textDatas[0].equals("1")) {
+					String sectionName = (id != 0) ? new String(sectionService.getSectionById(id).getName()) : "한성대 사거리";
+					messageController.sendMessage(sectionName + " 사고 발생");
+				}
+
 				/* map에 저장 */
 				Map<String, String> map = new HashMap<>();
 				list.add(map);
@@ -92,7 +94,7 @@ public class TrafficStatusController {
 			}
 			String[] textDatas = text.split(" ");
 			String imgPath = FILE_DIR + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg"; //이미지 경로 찾기
-			file = new File(request.getRealPath("/resources/files") + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg");
+			file = new File(request.getServletContext().getRealPath("/resources/files") + "/" + id + EWSN[i] + textDatas[0] + "_result.jpg");
 			if (!file.exists())
 				continue;
 

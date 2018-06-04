@@ -25,7 +25,7 @@ public class SectionService {
 	public void saveOrUpdateSection(Section section) {
 		sectionDao.saveOrUpdateSection(section);
 	}
-	
+
 	public void clearSections() {
 		sectionDao.clearSections();
 	}
